@@ -47,7 +47,7 @@ export function useSubscribeToMentions(): void {
 			const updateType = get(subscriptionData, 'data.subscribeToMentions.action')
 			const mention = get(subscriptionData, 'data.subscribeToMentions.mention') as Mention
 
-			// If the subscription updated sucessfully
+			// If the subscription updated successfully
 			if (mention) {
 				// Handle socket update
 				switch (updateType) {
