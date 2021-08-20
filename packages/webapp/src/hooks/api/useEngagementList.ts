@@ -176,7 +176,7 @@ export function useEngagementList(orgId?: string, userId?: string): useEngagemen
 			const updateType = get(subscriptionData, 'data.engagementUpdate.action')
 			const engagementUpdate = get(subscriptionData, 'data.engagementUpdate.engagement')
 
-			// If the subscription updated sucessfully
+			// If the subscription updated successfully
 			if (engagementUpdate) {
 				// Handle socket update
 				switch (updateType) {
