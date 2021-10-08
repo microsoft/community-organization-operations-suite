@@ -11,16 +11,13 @@ import { clearLocalStorage, commonStartup, TestContext } from '../scaffold'
 const username = config.get<string>('user.login')
 const password = config.get<string>('user.password')
 
-test.describe('The user login flow', () => {
+test.describe.parallel('The user login flow', () => {
 	let ctx: TestContext
 	let po: PageObjects
 
-	test.beforeAll(async ({ browser }) => {
+	test.beforeEach(async ({ browser }) => {
 		ctx = await commonStartup(browser)
 		po = ctx.objects
-	})
-
-	test.beforeEach(async () => {
 		await po.loginPage.open()
 		await po.loginPage.waitForLoad()
 	})

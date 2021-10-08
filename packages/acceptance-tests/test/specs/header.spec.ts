@@ -8,11 +8,11 @@ import { configuration } from '../configuration'
 import { PageObjects } from '../pageobjects'
 import { clearLocalStorage, commonStartup, TestContext } from '../scaffold'
 
-test.describe('The application header', () => {
+test.describe.parallel('The application header', () => {
 	let ctx: TestContext
 	let po: PageObjects
 
-	test.beforeAll(async ({ browser }) => {
+	test.beforeEach(async ({ browser }) => {
 		ctx = await commonStartup(browser)
 		po = ctx.objects
 		await po.sequences.login()

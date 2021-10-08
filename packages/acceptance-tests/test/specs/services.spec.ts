@@ -7,18 +7,18 @@ import { expect, test } from '@playwright/test'
 import { PageObjects } from '../pageobjects'
 import { clearLocalStorage, commonStartup, TestContext } from '../scaffold'
 
-test.describe('The Services Page', () => {
+test.describe.parallel('The Services Page', () => {
 	let ctx: TestContext
 	let po: PageObjects
 
-	test.beforeAll(async ({ browser }) => {
+	test.beforeEach(async ({ browser }) => {
 		ctx = await commonStartup(browser)
 		po = ctx.objects
 		await po.sequences.login()
 		await po.servicesPage.open()
 		await po.servicesPage.waitForLoad()
 	})
-	test.afterAll(async () => {
+	test.afterEach(async () => {
 		await clearLocalStorage(ctx.page)
 	})
 

@@ -7,17 +7,17 @@ import { test, expect } from '@playwright/test'
 import { PageObjects } from '../pageobjects'
 import { commonStartup, commonTeardown, TestContext } from '../scaffold'
 
-test.describe('The Dashboard Page', () => {
+test.describe.parallel('The Dashboard Page', () => {
 	let ctx: TestContext
 	let po: PageObjects
 
-	test.beforeAll(async ({ browser }) => {
+	test.beforeEach(async ({ browser }) => {
 		ctx = await commonStartup(browser)
 		po = ctx.objects
 		await po.sequences.login()
 	})
 
-	test.afterAll(async ({ browser }) => {
+	test.afterEach(async ({ browser }) => {
 		await commonTeardown(browser, ctx.page)
 	})
 

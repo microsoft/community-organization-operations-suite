@@ -1,3 +1,4 @@
 {
-	"headless": true
+	"headless": true,
+	"workers": 2
 }

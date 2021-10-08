@@ -1,7 +1,11 @@
 {
 	"headless": true,
-	"workers": null,
+	"workers": 2,
 	"coverage": false,
+	"allProjects": false,
+	"video": "on-first-retry",
+	"trace": "retain-on-failure",
+	"timeout": 45000,
 	"url": "http://localhost:3000",
 	"user": {
 		"login": "admin@curamericas.com",

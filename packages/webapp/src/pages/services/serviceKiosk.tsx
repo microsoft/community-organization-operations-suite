@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { FC, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import { useServiceList } from '~hooks/api/useServiceList'
 import { useCurrentUser } from '~hooks/api/useCurrentUser'
 import { useTranslation } from '~hooks/useTranslation'
@@ -24,15 +24,27 @@ const EditServicePage: FC = wrap(function EditService() {
 	const selectedService =
 		typeof sid === 'string' ? serviceList.find((s) => s.id === sid) : undefined
 
-	const handleAddServiceAnswer = async (values) => {
-		const res = await addServiceAnswer(values)
-		if (res) {
-			// Note: need a better way to do this
-			setShowForm(false)
-			setShowForm(true)
-		}
-	}
+	const handleAddServiceAnswer = useCallback(
+		async (values) => {
+			const res = await addServiceAnswer(values)
+			if (res) {
+				// Note: need a better way to do this
+				setShowForm(false)
+				setShowForm(true)
+			}
+		},
+		[setShowForm, addServiceAnswer]
+	)
 	const title = t('pageTitle')
+	const onDismiss = useCallback(() => setOpenNewFormPanel(false), [setOpenNewFormPanel])
+	const onAddNewClient = useCallback(() => {
+		setOpenNewFormPanel(true)
+		setNewFormName('addClientForm')
+	}, [setOpenNewFormPanel, setNewFormName])
+	const onQuickActions = useCallback(() => {
+		setOpenNewFormPanel(true)
+		setNewFormName('quickActionsPanel')
+	}, [])
 
 	return (
 		<>
@@ -40,23 +52,16 @@ const EditServicePage: FC = wrap(function EditService() {
 			<NewFormPanel
 				showNewFormPanel={openNewFormPanel}
 				newFormPanelName={newFormName}
-				onNewFormPanelDismiss={() => setOpenNewFormPanel(false)}
+				onNewFormPanelDismiss={onDismiss}
 			/>
-
 			<div className='mt-5 serviceKioskPage'>
 				{showForm && (
 					<FormGenerator
 						service={selectedService}
 						onSubmit={handleAddServiceAnswer}
 						previewMode={false}
-						onAddNewClient={() => {
-							setOpenNewFormPanel(true)
-							setNewFormName('addClientForm')
-						}}
-						onQuickActions={() => {
-							setOpenNewFormPanel(true)
-							setNewFormName('quickActionsPanel')
-						}}
+						onAddNewClient={onAddNewClient}
+						onQuickActions={onQuickActions}
 					/>
 				)}
 			</div>
