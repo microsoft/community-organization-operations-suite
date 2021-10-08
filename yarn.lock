@@ -3110,6 +3110,7 @@ __metadata:
     start-server-and-test: ^1.14.0
     ts-node: ^10.2.1
     typescript: ^4.4.3
+    v8-to-istanbul: ^8.1.0
   languageName: unknown
   linkType: soft
 
@@ -23351,6 +23352,17 @@ typescript@^4.4.3:
     convert-source-map: ^1.6.0
     source-map: ^0.7.3
   checksum: 3e8be80b9967a18c2196b016b29a956ffddb8fd2f2abe5ae126a616209c2ed7ba3172a9630715b375c50f88dd1dea3c97ba3e2ebfaee902dc4cc6a177f31a039
+  languageName: node
+  linkType: hard
+
+"v8-to-istanbul@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "v8-to-istanbul@npm:8.1.0"
+  dependencies:
+    "@types/istanbul-lib-coverage": ^2.0.1
+    convert-source-map: ^1.6.0
+    source-map: ^0.7.3
+  checksum: c7dabf9567e0c210b24d0720e553803cbe1ff81edb1ec7f2080eb4be01ed081a40286cc9f4aaa86d1bf8d57840cefae8fdf326b7cb8faa316ba50c7b948030d4
   languageName: node
   linkType: hard
 

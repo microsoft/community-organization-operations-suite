@@ -41,3 +41,4 @@ deploy.zip
 # LogFiles
 packages/webapp/test-output.html
 *-*.log*
+allure-results/

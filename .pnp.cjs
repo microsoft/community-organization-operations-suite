@@ -6264,7 +6264,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["npm-run-all", "npm:4.1.5"],
             ["start-server-and-test", "npm:1.14.0"],
             ["ts-node", "virtual:3118b858b1d15eb4532c8d779ce18eb3180919657433c64bc4e1de2541eeb46d4d63793c74833f1d12ae95220a2a0b2b66cc33a17f666525165227d734b3086c#npm:10.2.1"],
-            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
+            ["v8-to-istanbul", "npm:8.1.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -30895,6 +30896,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/v8-to-istanbul-npm-8.0.0-0712c18321-3e8be80b99.zip/node_modules/v8-to-istanbul/",
           "packageDependencies": [
             ["v8-to-istanbul", "npm:8.0.0"],
+            ["@types/istanbul-lib-coverage", "npm:2.0.3"],
+            ["convert-source-map", "npm:1.7.0"],
+            ["source-map", "npm:0.7.3"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:8.1.0", {
+          "packageLocation": "./.yarn/cache/v8-to-istanbul-npm-8.1.0-a7e185ca12-c7dabf9567.zip/node_modules/v8-to-istanbul/",
+          "packageDependencies": [
+            ["v8-to-istanbul", "npm:8.1.0"],
             ["@types/istanbul-lib-coverage", "npm:2.0.3"],
             ["convert-source-map", "npm:1.7.0"],
             ["source-map", "npm:0.7.3"]

@@ -1,4 +1,6 @@
 {
+	"headless": true,
+	"workers": null,
 	"url": "http://localhost:3000",
 	"user": {
 		"login": "admin@curamericas.com",
