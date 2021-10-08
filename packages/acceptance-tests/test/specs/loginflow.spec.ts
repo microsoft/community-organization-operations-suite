@@ -4,19 +4,20 @@
  */
 /* eslint-disable jest/expect-expect */
 import config from 'config'
-import { createPageObjects, PageObjects } from '../pageobjects'
-import { Page, test } from '@playwright/test'
+import { PageObjects } from '../pageobjects'
+import { test } from '@playwright/test'
+import { clearLocalStorage, commonStartup, TestContext } from '../scaffold'
 
 const username = config.get<string>('user.login')
 const password = config.get<string>('user.password')
 
 test.describe('The user login flow', () => {
-	let page: Page
+	let ctx: TestContext
 	let po: PageObjects
 
 	test.beforeAll(async ({ browser }) => {
-		page = await browser.newPage()
-		po = createPageObjects(page)
+		ctx = await commonStartup(browser)
+		po = ctx.objects
 	})
 
 	test.beforeEach(async () => {
@@ -25,7 +26,7 @@ test.describe('The user login flow', () => {
 	})
 
 	test.afterEach(async () => {
-		await page.evaluate(() => localStorage.clear())
+		await clearLocalStorage(ctx.page)
 	})
 
 	test.describe('should log in with valid credentials', () => {

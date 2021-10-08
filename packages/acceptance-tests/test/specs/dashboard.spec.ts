@@ -3,23 +3,22 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 /* eslint-disable jest/expect-expect */
-import { Page, test, expect } from '@playwright/test'
-import { startCoverage, stopCoverage } from '../coverage'
-import { createPageObjects, PageObjects } from '../pageobjects'
+import { test, expect } from '@playwright/test'
+import { PageObjects } from '../pageobjects'
+import { commonStartup, commonTeardown, TestContext } from '../scaffold'
 
 test.describe('The Dashboard Page', () => {
-	let page: Page
+	let ctx: TestContext
 	let po: PageObjects
 
 	test.beforeAll(async ({ browser }) => {
-		page = await browser.newPage()
-		startCoverage(browser, page)
-		po = createPageObjects(page)
+		ctx = await commonStartup(browser)
+		po = ctx.objects
 		await po.sequences.login()
 	})
+
 	test.afterAll(async ({ browser }) => {
-		await page.evaluate(() => localStorage.clear())
-		stopCoverage(browser, page)
+		await commonTeardown(browser, ctx.page)
 	})
 
 	test('can open up the "Create Request" panel', async () => {

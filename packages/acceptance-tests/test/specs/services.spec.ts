@@ -3,22 +3,23 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 /* eslint-disable jest/expect-expect, jest/no-disabled-tests */
-import { expect, Page, test } from '@playwright/test'
-import { createPageObjects, PageObjects } from '../pageobjects'
+import { expect, test } from '@playwright/test'
+import { PageObjects } from '../pageobjects'
+import { clearLocalStorage, commonStartup, TestContext } from '../scaffold'
 
 test.describe('The Services Page', () => {
-	let page: Page
+	let ctx: TestContext
 	let po: PageObjects
 
 	test.beforeAll(async ({ browser }) => {
-		page = await browser.newPage()
-		po = createPageObjects(page)
+		ctx = await commonStartup(browser)
+		po = ctx.objects
 		await po.sequences.login()
 		await po.servicesPage.open()
 		await po.servicesPage.waitForLoad()
 	})
 	test.afterAll(async () => {
-		await page.evaluate(() => localStorage.clear())
+		await clearLocalStorage(ctx.page)
 	})
 
 	test('can create service with minimal input', async () => {
