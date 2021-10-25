@@ -200,7 +200,7 @@ export class UserWithinOrgStrategy
 		if (user) {
 			const userOrgs = new Set<string>(user.roles.map((r) => r.org_id) ?? empty)
 			for (const orgId of userOrgs) {
-				// only admins can take actions on user entities in their org
+				// only admins can take actions on user entities in their org (e.g. resetPassword)
 				if (this.authenticator.isAuthorized(requestCtx.identity, orgId, RoleType.Admin)) {
 					return true
 				}
