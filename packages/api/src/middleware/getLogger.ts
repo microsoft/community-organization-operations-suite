@@ -3,8 +3,9 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import pino, { Logger } from 'pino'
-import { Configuration } from '~components/Configuration'
+import type { Logger } from 'pino'
+import pino from 'pino'
+import type { Configuration } from '~components/Configuration'
 
 export function getLogger(config: Configuration): Logger {
 	return pino({

@@ -3,11 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Engagement, QueryEngagementArgs } from '@cbosuite/schema/dist/provider-types'
+import type { Engagement, QueryEngagementArgs } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { EngagementCollection } from '~db/EngagementCollection'
+import type { EngagementCollection } from '~db/EngagementCollection'
 import { createGQLEngagement } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 
 @singleton()
 export class GetEngagementInteractor

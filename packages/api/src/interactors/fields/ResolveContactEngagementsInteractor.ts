@@ -2,11 +2,11 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Contact, Engagement } from '@cbosuite/schema/dist/provider-types'
+import type { Contact, Engagement } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { EngagementCollection } from '~db/EngagementCollection'
+import type { EngagementCollection } from '~db/EngagementCollection'
 import { createGQLEngagement } from '~dto'
-import { Interactor } from '~types'
+import type { Interactor } from '~types'
 import { empty } from '~utils/noop'
 
 @singleton()

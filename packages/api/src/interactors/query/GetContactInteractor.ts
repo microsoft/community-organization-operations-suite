@@ -3,11 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Contact, QueryContactArgs } from '@cbosuite/schema/dist/provider-types'
+import type { Contact, QueryContactArgs } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ContactCollection } from '~db/ContactCollection'
+import type { ContactCollection } from '~db/ContactCollection'
 import { createGQLContact } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { createLogger } from '~utils'
 
 const logger = createLogger('getContactInteractor', true)

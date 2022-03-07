@@ -4,15 +4,15 @@
  */
 
 import { ApolloServer } from 'apollo-server-fastify'
-import { FastifyReply, FastifyRequest } from 'fastify'
-import { GraphQLSchema } from 'graphql'
+import type { FastifyReply, FastifyRequest } from 'fastify'
+import type { GraphQLSchema } from 'graphql'
 import { singleton } from 'tsyringe'
 import { getLogger } from '~middleware'
-import { RequestContext } from '~types'
+import type { RequestContext } from '~types'
 import { createLogger } from '~utils'
 import { noop } from '~utils/noop'
-import { Configuration } from './Configuration'
-import { RequestContextBuilder } from './RequestContextBuilder'
+import type { Configuration } from './Configuration'
+import type { RequestContextBuilder } from './RequestContextBuilder'
 
 const log = createLogger('app', true)
 

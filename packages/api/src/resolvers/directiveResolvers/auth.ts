@@ -3,9 +3,9 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { AuthenticationError } from 'apollo-server-errors'
-import { NextResolverFn } from '@graphql-tools/utils'
-import { RequestContext } from '~types'
-import { DirectiveResolverFn } from './types'
+import type { NextResolverFn } from '@graphql-tools/utils'
+import type { RequestContext } from '~types'
+import type { DirectiveResolverFn } from './types'
 
 export const auth: DirectiveResolverFn = function auth(
 	next: NextResolverFn,

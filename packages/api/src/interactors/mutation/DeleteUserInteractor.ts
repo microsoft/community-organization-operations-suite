@@ -2,14 +2,14 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationDeleteUserArgs, VoidResponse } from '@cbosuite/schema/dist/provider-types'
-import { Interactor, RequestContext } from '~types'
+import type { MutationDeleteUserArgs, VoidResponse } from '@cbosuite/schema/dist/provider-types'
+import type { Interactor, RequestContext } from '~types'
 import { SuccessVoidResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { UserCollection } from '~db/UserCollection'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { Localization } from '~components/Localization'
+import type { UserCollection } from '~db/UserCollection'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { Telemetry } from '~components/Telemetry'
 
 @singleton()
 export class DeleteUserInteractor

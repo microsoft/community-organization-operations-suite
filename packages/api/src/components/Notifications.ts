@@ -2,15 +2,14 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Configuration } from './Configuration'
-import {
-	initializeApp as fbInitializeApp,
-	credential as fbCredential,
+import type { Configuration } from './Configuration'
+import type {
 	ServiceAccount as FBServiceAccount,
 	messaging as fbMessaging,
 	app as fbApp
 } from 'firebase-admin'
-import { Localization } from './Localization'
+import { initializeApp as fbInitializeApp, credential as fbCredential } from 'firebase-admin'
+import type { Localization } from './Localization'
 import { singleton } from 'tsyringe'
 
 export interface MessageOptions {

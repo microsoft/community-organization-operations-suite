@@ -3,14 +3,14 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { QueryExportDataArgs, Engagement } from '@cbosuite/schema/dist/provider-types'
+import type { QueryExportDataArgs, Engagement } from '@cbosuite/schema/dist/provider-types'
 import { createGQLEngagement } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { sortByDate } from '~utils'
 import { empty } from '~utils/noop'
 import { singleton } from 'tsyringe'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { Telemetry } from '~components/Telemetry'
 
 const QUERY = {}
 

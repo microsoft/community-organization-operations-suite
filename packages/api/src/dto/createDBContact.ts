@@ -3,8 +3,9 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { ContactInput, ContactStatus } from '@cbosuite/schema/dist/provider-types'
-import { DbContact } from '~db/types'
+import type { ContactInput } from '@cbosuite/schema/dist/provider-types'
+import { ContactStatus } from '@cbosuite/schema/dist/provider-types'
+import type { DbContact } from '~db/types'
 import { v4 as createId } from 'uuid'
 
 export function createDBContact(contact: ContactInput): DbContact {

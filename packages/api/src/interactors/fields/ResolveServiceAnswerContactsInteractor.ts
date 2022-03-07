@@ -2,11 +2,11 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Contact, ServiceAnswer } from '@cbosuite/schema/dist/provider-types'
+import type { Contact, ServiceAnswer } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ContactCollection } from '~db/ContactCollection'
+import type { ContactCollection } from '~db/ContactCollection'
 import { createGQLContact } from '~dto'
-import { Interactor } from '~types'
+import type { Interactor } from '~types'
 
 @singleton()
 export class ResolveServiceAnswerContactsInteractor

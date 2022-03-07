@@ -2,14 +2,17 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationUpdateUserFcmTokenArgs, VoidResponse } from '@cbosuite/schema/dist/provider-types'
-import { Interactor, RequestContext } from '~types'
+import type {
+	MutationUpdateUserFcmTokenArgs,
+	VoidResponse
+} from '@cbosuite/schema/dist/provider-types'
+import type { Interactor, RequestContext } from '~types'
 import { createLogger } from '~utils'
 import { SuccessVoidResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { UserCollection } from '~db/UserCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { Localization } from '~components/Localization'
+import type { UserCollection } from '~db/UserCollection'
+import type { Telemetry } from '~components/Telemetry'
 const logger = createLogger('interactors:update-user-fcm-token')
 
 @singleton()

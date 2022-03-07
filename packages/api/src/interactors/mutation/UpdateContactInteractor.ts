@@ -2,17 +2,20 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationUpdateContactArgs, ContactResponse } from '@cbosuite/schema/dist/provider-types'
+import type {
+	MutationUpdateContactArgs,
+	ContactResponse
+} from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createGQLContact } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { emptyStr } from '~utils/noop'
 import { SuccessContactResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { ContactCollection } from '~db/ContactCollection'
-import { Telemetry } from '~components/Telemetry'
-import { DbContact } from '~db/types'
+import type { Localization } from '~components/Localization'
+import type { ContactCollection } from '~db/ContactCollection'
+import type { Telemetry } from '~components/Telemetry'
+import type { DbContact } from '~db/types'
 
 @singleton()
 export class UpdateContactInteractor

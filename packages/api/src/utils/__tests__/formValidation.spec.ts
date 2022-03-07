@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { validateAnswer } from '../formValidation'
-import { DbService, DbServiceField } from '../../db'
+import type { DbService, DbServiceField } from '../../db'
 import { v4 } from 'uuid'
 import {
 	ServiceFieldRequirement,

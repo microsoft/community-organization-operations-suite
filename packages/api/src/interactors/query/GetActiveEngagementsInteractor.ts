@@ -4,9 +4,9 @@
  */
 import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { Configuration } from '~components/Configuration'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { DbEngagement } from '~db/types'
+import type { Configuration } from '~components/Configuration'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { DbEngagement } from '~db/types'
 import { sortByDate } from '~utils'
 import { GetEngagementsInteractorBase } from './GetEngagementsInteractorBase'
 

@@ -4,7 +4,7 @@
  */
 import { setup, defaultClient } from 'applicationinsights'
 import { singleton } from 'tsyringe'
-import { Configuration } from './Configuration'
+import type { Configuration } from './Configuration'
 import { createLogger } from '~utils'
 const logger = createLogger('telemetry')
 

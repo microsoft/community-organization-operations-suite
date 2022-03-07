@@ -3,8 +3,8 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Db } from 'mongodb'
-import { DbOrganization } from '../src/db/types'
+import type { Db } from 'mongodb'
+import type { DbOrganization } from '../src/db/types'
 
 // DO NOT CHANGE THE NEXT LINE module.exports is needed for migrate-mongo to funciton properly
 module.exports = {

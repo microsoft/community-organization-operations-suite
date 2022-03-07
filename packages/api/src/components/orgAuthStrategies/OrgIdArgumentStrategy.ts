@@ -3,10 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { OrgAuthDirectiveArgs, RoleType } from '@cbosuite/schema/dist/provider-types'
+import type { OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
+import { RoleType } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { Authenticator } from '~components/Authenticator'
-import { RequestContext, OrgAuthEvaluationStrategy } from '~types'
+import type { Authenticator } from '~components/Authenticator'
+import type { RequestContext, OrgAuthEvaluationStrategy } from '~types'
 
 const ORG_ID_ARG = 'orgId'
 

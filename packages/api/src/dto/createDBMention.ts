@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { DbMention } from '~db/types'
+import type { DbMention } from '~db/types'
 
 export function createDBMention(
 	engagementId: string,

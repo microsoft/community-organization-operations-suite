@@ -3,8 +3,8 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { ActionInput } from '@cbosuite/schema/dist/provider-types'
-import { DbAction } from '~db/types'
+import type { ActionInput } from '@cbosuite/schema/dist/provider-types'
+import type { DbAction } from '~db/types'
 
 export function createDBAction(action: ActionInput): DbAction {
 	return {

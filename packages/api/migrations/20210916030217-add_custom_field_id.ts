@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Db } from 'mongodb'
+import type { Db } from 'mongodb'
 import { v4 as createId } from 'uuid'
 
 module.exports = {

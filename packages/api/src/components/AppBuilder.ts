@@ -3,15 +3,15 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 /* eslint-disable @essex/adjacent-await */
-import http from 'http'
-import { GraphQLSchema } from 'graphql'
+import type http from 'http'
+import type { GraphQLSchema } from 'graphql'
 import { createLogger } from '~utils'
 import { createSchema } from '~utils/createSchema'
 import { singleton } from 'tsyringe'
-import { Configuration } from './Configuration'
-import { SubscriptionServerBuilder } from './SubscriptionServerBuilder'
-import { ApolloServerBuilder } from './ApolloServerBuilder'
-import { FastifyServerBuilder } from './FastifyServerBuilder'
+import type { Configuration } from './Configuration'
+import type { SubscriptionServerBuilder } from './SubscriptionServerBuilder'
+import type { ApolloServerBuilder } from './ApolloServerBuilder'
+import type { FastifyServerBuilder } from './FastifyServerBuilder'
 
 const logger = createLogger('app', true)
 

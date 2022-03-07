@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { DbOrganization, DbUser, DbTag, DbContact } from '~db/types'
+import type { DbOrganization, DbUser, DbTag, DbContact } from '~db/types'
 import faker from 'faker'
 import { v4 } from 'uuid'
 

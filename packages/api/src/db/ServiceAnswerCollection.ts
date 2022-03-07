@@ -3,9 +3,9 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { singleton } from 'tsyringe'
-import { DatabaseConnector } from '~components/DatabaseConnector'
+import type { DatabaseConnector } from '~components/DatabaseConnector'
 import { CollectionBase } from './CollectionBase'
-import { DbServiceAnswer } from './types'
+import type { DbServiceAnswer } from './types'
 
 @singleton()
 export class ServiceAnswerCollection extends CollectionBase<DbServiceAnswer> {

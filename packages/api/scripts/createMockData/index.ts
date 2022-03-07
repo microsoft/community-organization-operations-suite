@@ -4,7 +4,7 @@
  */
 
 import fs from 'fs'
-import { DbOrganization, DbUser, DbContact, DbEngagement, DbTag, DbService } from '~db/types'
+import type { DbOrganization, DbUser, DbContact, DbEngagement, DbTag, DbService } from '~db/types'
 import { writeCollectionData } from './writeCollectionData'
 import { createOrganizationTags } from './createOrganizationTags'
 import { createOrganizationUsers } from './createOrganizationUsers'

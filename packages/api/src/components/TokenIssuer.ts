@@ -2,11 +2,12 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { sign, verify, JwtPayload, VerifyOptions } from 'jsonwebtoken'
+import type { JwtPayload, VerifyOptions } from 'jsonwebtoken'
+import { sign, verify } from 'jsonwebtoken'
 import { inject, singleton } from 'tsyringe'
 import { Configuration } from './Configuration'
 import { emptyObj } from '~utils/noop'
-import { DbUser } from '~db/types'
+import type { DbUser } from '~db/types'
 
 export enum TokenPurpose {
 	Authentication = 'auth',

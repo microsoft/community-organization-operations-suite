@@ -3,10 +3,10 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { singleton } from 'tsyringe'
-import { DatabaseConnector } from '~components/DatabaseConnector'
+import type { DatabaseConnector } from '~components/DatabaseConnector'
 import { hashPassword, escapeRegexString } from '~utils'
 import { CollectionBase } from './CollectionBase'
-import { DbMention, DbUser } from './types'
+import type { DbMention, DbUser } from './types'
 
 @singleton()
 export class UserCollection extends CollectionBase<DbUser> {

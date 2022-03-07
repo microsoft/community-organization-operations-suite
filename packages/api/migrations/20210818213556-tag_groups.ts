@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Db } from 'mongodb'
+import type { Db } from 'mongodb'
 import { v4 as createId } from 'uuid'
 import { createLogger } from '~utils'
 const logger = createLogger('migrations', true)

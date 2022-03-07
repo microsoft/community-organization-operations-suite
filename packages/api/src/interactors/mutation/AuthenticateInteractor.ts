@@ -2,18 +2,18 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import {
+import type {
 	MutationAuthenticateArgs,
 	AuthenticationResponse
 } from '@cbosuite/schema/dist/provider-types'
 import { AuthenticationError } from 'apollo-server-errors'
 import isEmpty from 'lodash/isEmpty'
 import { singleton } from 'tsyringe'
-import { Authenticator } from '~components/Authenticator'
-import { Localization } from '~components/Localization'
-import { Telemetry } from '~components/Telemetry'
+import type { Authenticator } from '~components/Authenticator'
+import type { Localization } from '~components/Localization'
+import type { Telemetry } from '~components/Telemetry'
 import { createGQLUser } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { SuccessAuthenticationResponse } from '~utils/response'
 
 @singleton()

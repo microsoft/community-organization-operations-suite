@@ -3,11 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Action, User } from '@cbosuite/schema/dist/provider-types'
+import type { Action, User } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { UserCollection } from '~db/UserCollection'
+import type { UserCollection } from '~db/UserCollection'
 import { createGQLUser } from '~dto'
-import { Interactor } from '~types'
+import type { Interactor } from '~types'
 
 @singleton()
 export class ResolveActionTaggedUserInteractor implements Interactor<Action, unknown, User | null> {

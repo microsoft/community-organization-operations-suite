@@ -4,8 +4,8 @@
  */
 
 import { singleton } from 'tsyringe'
-import { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
-import { ServiceCollection } from '~db/ServiceCollection'
+import type { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
+import type { ServiceCollection } from '~db/ServiceCollection'
 
 @singleton()
 export class ServiceEntryTagCounter {

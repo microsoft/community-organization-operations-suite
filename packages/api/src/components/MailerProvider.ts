@@ -2,8 +2,9 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Transporter, createTransport } from 'nodemailer'
-import { Configuration } from '~components/Configuration'
+import type { Transporter } from 'nodemailer'
+import { createTransport } from 'nodemailer'
+import type { Configuration } from '~components/Configuration'
 const sgTransport = require('nodemailer-sendgrid-transport')
 
 export class MailerProvider {

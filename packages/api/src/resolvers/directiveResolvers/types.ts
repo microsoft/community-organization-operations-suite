@@ -3,8 +3,8 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { NextResolverFn } from '@graphql-tools/utils'
-import { RequestContext } from '~types'
+import type { NextResolverFn } from '@graphql-tools/utils'
+import type { RequestContext } from '~types'
 
 export type DirectiveResolverFn = (
 	next: NextResolverFn,

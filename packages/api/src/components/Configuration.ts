@@ -3,7 +3,8 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import 'reflect-metadata'
-import config, { IConfig } from 'config'
+import type { IConfig } from 'config'
+import config from 'config'
 import { singleton } from 'tsyringe'
 import { createLogger } from '~utils'
 import { version } from '../../.version.json'

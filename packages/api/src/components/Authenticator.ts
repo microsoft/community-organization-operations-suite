@@ -3,12 +3,12 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { RoleType } from '@cbosuite/schema/dist/provider-types'
-import { User } from '~types'
+import type { User } from '~types'
 import { createLogger, generatePassword, validatePasswordHash } from '~utils'
-import { TokenIssuer } from './TokenIssuer'
+import type { TokenIssuer } from './TokenIssuer'
 import { singleton } from 'tsyringe'
-import { UserCollection } from '~db/UserCollection'
-import { DbRole } from '~db/types'
+import type { UserCollection } from '~db/UserCollection'
+import type { DbRole } from '~db/types'
 const logger = createLogger('authenticator')
 
 @singleton()

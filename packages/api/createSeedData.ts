@@ -7,7 +7,7 @@ import fs from 'fs'
 import path from 'path'
 import bcrypt from 'bcryptjs'
 import { v4 } from 'uuid'
-import { DbOrganization, DbUser, DbContact, DbEngagement, DbTag, DbRole } from './src/db/types'
+import type { DbOrganization, DbUser, DbContact, DbEngagement, DbTag, DbRole } from './src/db/types'
 import { RoleType } from '@cbosuite/schema/lib/provider-types'
 import { TagCategory } from '@cbosuite/schema/dist/provider-types'
 

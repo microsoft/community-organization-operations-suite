@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Db } from 'mongodb'
+import type { Db } from 'mongodb'
 
 module.exports = {
 	async up(db: Db) {

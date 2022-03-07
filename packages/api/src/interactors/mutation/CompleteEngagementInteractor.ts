@@ -2,21 +2,21 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import {
+import type {
 	MutationCompleteEngagementArgs,
-	EngagementResponse,
-	EngagementStatus
+	EngagementResponse
 } from '@cbosuite/schema/dist/provider-types'
+import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createDBAction, createGQLEngagement } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { sortByDate } from '~utils'
 import { SuccessEngagementResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { Publisher } from '~components/Publisher'
-import { Telemetry } from '~components/Telemetry'
+import type { Localization } from '~components/Localization'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { Publisher } from '~components/Publisher'
+import type { Telemetry } from '~components/Telemetry'
 
 @singleton()
 export class CompleteEngagementInteractor

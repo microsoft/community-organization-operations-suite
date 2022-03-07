@@ -2,12 +2,14 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Server } from 'http'
-import { execute, subscribe, GraphQLSchema } from 'graphql'
-import { ConnectionContext, SubscriptionServer } from 'subscriptions-transport-ws'
-import WebSocket from 'ws'
+import type { Server } from 'http'
+import type { GraphQLSchema } from 'graphql'
+import { execute, subscribe } from 'graphql'
+import type { ConnectionContext } from 'subscriptions-transport-ws'
+import { SubscriptionServer } from 'subscriptions-transport-ws'
+import type WebSocket from 'ws'
 import { createLogger } from '~utils'
-import { RequestContextBuilder } from './RequestContextBuilder'
+import type { RequestContextBuilder } from './RequestContextBuilder'
 import { singleton } from 'tsyringe'
 
 const wsLogger = createLogger('sockets')

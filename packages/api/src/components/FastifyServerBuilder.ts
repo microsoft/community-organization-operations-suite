@@ -3,18 +3,19 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import http from 'http'
-import fastify, { FastifyInstance, FastifyPluginCallback } from 'fastify'
+import type http from 'http'
+import type { FastifyInstance, FastifyPluginCallback } from 'fastify'
+import fastify from 'fastify'
 import fastifyCors from 'fastify-cors'
 import { singleton } from 'tsyringe'
-import { Configuration } from './Configuration'
-import { ContactCollection } from '~db/ContactCollection'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { OrganizationCollection } from '~db/OrganizationCollection'
-import { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
-import { ServiceCollection } from '~db/ServiceCollection'
-import { TagCollection } from '~db/TagCollection'
-import { UserCollection } from '~db/UserCollection'
+import type { Configuration } from './Configuration'
+import type { ContactCollection } from '~db/ContactCollection'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { OrganizationCollection } from '~db/OrganizationCollection'
+import type { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
+import type { ServiceCollection } from '~db/ServiceCollection'
+import type { TagCollection } from '~db/TagCollection'
+import type { UserCollection } from '~db/UserCollection'
 import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
 
 @singleton()

@@ -3,10 +3,10 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 /* eslint-disable no-console */
-import { ServiceStatus } from '@cbosuite/schema/dist/client-types'
+import type { ServiceStatus } from '@cbosuite/schema/dist/client-types'
 import { ServiceFieldRequirement, ServiceFieldType } from '@cbosuite/schema/dist/provider-types'
-import { Collection, Db, MongoClient } from 'mongodb'
-import {
+import type { Collection, Db, MongoClient } from 'mongodb'
+import type {
 	DbServiceAnswer,
 	DbServiceFieldInput,
 	DbServiceField,

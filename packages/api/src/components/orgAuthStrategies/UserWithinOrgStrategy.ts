@@ -3,12 +3,13 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { OrgAuthDirectiveArgs, RoleType } from '@cbosuite/schema/dist/provider-types'
+import type { OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
+import { RoleType } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { Authenticator } from '../Authenticator'
-import { RequestContext, OrgAuthEvaluationStrategy } from '~types'
+import type { Authenticator } from '../Authenticator'
+import type { RequestContext, OrgAuthEvaluationStrategy } from '~types'
 import { empty } from '~utils/noop'
-import { UserCollection } from '~db/UserCollection'
+import type { UserCollection } from '~db/UserCollection'
 
 const USER_ID_ARG = 'userId'
 

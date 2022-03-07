@@ -2,10 +2,10 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { TagUsageCount } from '@cbosuite/schema/dist/provider-types'
+import type { TagUsageCount } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ContactCollection } from '~db/ContactCollection'
-import { Interactor } from '~types'
+import type { ContactCollection } from '~db/ContactCollection'
+import type { Interactor } from '~types'
 
 @singleton()
 export class ResolveTagUsageCountClientsInteractor
