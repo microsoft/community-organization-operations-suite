@@ -2,16 +2,16 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationUpdateTagArgs, TagResponse } from '@cbosuite/schema/dist/provider-types'
+import type { MutationUpdateTagArgs, TagResponse } from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createGQLTag } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { createLogger } from '~utils'
 import { SuccessTagResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { TagCollection } from '~db/TagCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { Localization } from '~components/Localization'
+import type { TagCollection } from '~db/TagCollection'
+import type { Telemetry } from '~components/Telemetry'
 const logger = createLogger('interactors:update-tag')
 
 @singleton()

@@ -2,21 +2,21 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import {
+import type {
 	MutationCreateServiceAnswerArgs,
 	ServiceAnswerResponse
 } from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createDBServiceAnswer } from '~dto'
 import { createGQLServiceAnswer } from '~dto/createGQLServiceAnswer'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { validateAnswer } from '~utils/formValidation'
 import { SuccessServiceAnswerResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { ServiceCollection } from '~db/ServiceCollection'
-import { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { Localization } from '~components/Localization'
+import type { ServiceCollection } from '~db/ServiceCollection'
+import type { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
+import type { Telemetry } from '~components/Telemetry'
 
 @singleton()
 export class CreateServiceAnswerInteractor

@@ -3,8 +3,9 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { EngagementInput, EngagementStatus } from '@cbosuite/schema/dist/provider-types'
-import { DbEngagement } from '~db/types'
+import type { EngagementInput } from '@cbosuite/schema/dist/provider-types'
+import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
+import type { DbEngagement } from '~db/types'
 import { v4 as createId } from 'uuid'
 
 export function createDBEngagement(engagement: EngagementInput): DbEngagement {

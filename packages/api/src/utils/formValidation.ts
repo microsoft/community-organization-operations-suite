@@ -3,14 +3,13 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import {
+import type {
 	ServiceAnswerField,
 	ServiceAnswerFieldInput,
-	ServiceAnswerInput,
-	ServiceFieldRequirement,
-	ServiceFieldType
+	ServiceAnswerInput
 } from '@cbosuite/schema/dist/provider-types'
-import { DbService, DbServiceField } from '~db/types'
+import { ServiceFieldRequirement, ServiceFieldType } from '@cbosuite/schema/dist/provider-types'
+import type { DbService, DbServiceField } from '~db/types'
 import { empty } from './noop'
 
 export function validateAnswer(service: DbService, answer: ServiceAnswerInput) {

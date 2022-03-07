@@ -2,9 +2,9 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { ServiceFieldInput } from '@cbosuite/schema/dist/provider-types'
+import type { ServiceFieldInput } from '@cbosuite/schema/dist/provider-types'
 import { v4 as createId } from 'uuid'
-import { DbServiceField } from '~db/types'
+import type { DbServiceField } from '~db/types'
 
 export function createDBServiceFields(
 	customFields: ServiceFieldInput[] | DbServiceField[]

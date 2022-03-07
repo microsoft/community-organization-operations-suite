@@ -3,11 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { QueryServicesArgs, Service } from '@cbosuite/schema/dist/provider-types'
+import type { QueryServicesArgs, Service } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ServiceCollection } from '~db/ServiceCollection'
+import type { ServiceCollection } from '~db/ServiceCollection'
 import { createGQLService } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { empty } from '~utils/noop'
 
 @singleton()

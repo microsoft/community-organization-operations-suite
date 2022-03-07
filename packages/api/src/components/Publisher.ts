@@ -3,10 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Engagement, EngagementStatus, Mention } from '@cbosuite/schema/dist/provider-types'
+import type { Engagement, Mention } from '@cbosuite/schema/dist/provider-types'
+import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
 import { PubSub } from 'graphql-subscriptions'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
+import type { Localization } from '~components/Localization'
 
 @singleton()
 export class Publisher {

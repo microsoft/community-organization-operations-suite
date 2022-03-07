@@ -2,21 +2,21 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import {
+import type {
 	MutationInitiatePasswordResetArgs,
 	VoidResponse
 } from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { getForgotPasswordHTMLTemplate, createLogger } from '~utils'
 import { SuccessVoidResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Configuration } from '~components/Configuration'
-import { Localization } from '~components/Localization'
-import { TokenIssuer } from '~components/TokenIssuer'
-import { UserCollection } from '~db/UserCollection'
+import type { Configuration } from '~components/Configuration'
+import type { Localization } from '~components/Localization'
+import type { TokenIssuer } from '~components/TokenIssuer'
+import type { UserCollection } from '~db/UserCollection'
 import { MailerProvider } from '~components/MailerProvider'
-import { Telemetry } from '~components/Telemetry'
+import type { Telemetry } from '~components/Telemetry'
 
 const logger = createLogger('interactors:forgot-user-password')
 

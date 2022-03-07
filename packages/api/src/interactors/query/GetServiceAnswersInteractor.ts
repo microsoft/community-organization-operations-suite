@@ -2,12 +2,12 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { ServiceAnswer, QueryServiceAnswersArgs } from '@cbosuite/schema/dist/provider-types'
+import type { ServiceAnswer, QueryServiceAnswersArgs } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
-import { ServiceCollection } from '~db/ServiceCollection'
+import type { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
+import type { ServiceCollection } from '~db/ServiceCollection'
 import { createGQLServiceAnswer } from '~dto/createGQLServiceAnswer'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { empty } from '~utils/noop'
 
 @singleton()

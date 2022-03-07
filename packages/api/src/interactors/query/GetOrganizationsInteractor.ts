@@ -2,11 +2,11 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Organization, QueryOrganizationsArgs } from '@cbosuite/schema/dist/provider-types'
+import type { Organization, QueryOrganizationsArgs } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { OrganizationCollection } from '~db/OrganizationCollection'
+import type { OrganizationCollection } from '~db/OrganizationCollection'
 import { createGQLOrganization } from '~dto'
-import { Interactor } from '~types'
+import type { Interactor } from '~types'
 
 @singleton()
 export class GetOrganizationsInteractor

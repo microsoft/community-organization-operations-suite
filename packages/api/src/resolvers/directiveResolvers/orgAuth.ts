@@ -3,9 +3,9 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { AuthenticationError, ForbiddenError } from 'apollo-server-errors'
-import { OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
-import { NextResolverFn } from '@graphql-tools/utils'
-import { RequestContext, OrgAuthEvaluationStrategy } from '~types'
+import type { OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
+import type { NextResolverFn } from '@graphql-tools/utils'
+import type { RequestContext, OrgAuthEvaluationStrategy } from '~types'
 import { createLogger } from '~utils/createLogger'
 import { container } from 'tsyringe'
 import { OrgAuthStrategyListProvider } from '~components/OrgAuthStrategyListProvider'

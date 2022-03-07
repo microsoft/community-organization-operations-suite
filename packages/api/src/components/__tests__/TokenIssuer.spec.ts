@@ -2,7 +2,8 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { TokenIssuer, TokenIssuerConfig, TokenPurpose } from '../TokenIssuer'
+import type { TokenIssuerConfig } from '../TokenIssuer'
+import { TokenIssuer, TokenPurpose } from '../TokenIssuer'
 
 class TestTokenIssuer extends TokenIssuer {
 	public issueToken(

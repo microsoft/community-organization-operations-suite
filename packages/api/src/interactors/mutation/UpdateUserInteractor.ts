@@ -2,17 +2,17 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationUpdateUserArgs, UserResponse } from '@cbosuite/schema/dist/provider-types'
+import type { MutationUpdateUserArgs, UserResponse } from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createGQLUser } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { empty, emptyStr } from '~utils/noop'
 import { SuccessUserResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { UserCollection } from '~db/UserCollection'
-import { Telemetry } from '~components/Telemetry'
-import { DbRole, DbUser } from '~db/types'
+import type { Localization } from '~components/Localization'
+import type { UserCollection } from '~db/UserCollection'
+import type { Telemetry } from '~components/Telemetry'
+import type { DbRole, DbUser } from '~db/types'
 
 @singleton()
 export class UpdateUserInteractor

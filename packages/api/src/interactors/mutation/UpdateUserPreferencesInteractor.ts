@@ -4,14 +4,14 @@
  */
 
 import { singleton } from 'tsyringe'
-import { Interactor, RequestContext } from '~types'
-import {
+import type { Interactor, RequestContext } from '~types'
+import type {
 	MutationUpdateUserPreferencesArgs,
 	VoidResponse
 } from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
-import { Localization } from '~components/Localization'
-import { UserCollection } from '~db/UserCollection'
+import type { Localization } from '~components/Localization'
+import type { UserCollection } from '~db/UserCollection'
 import { SuccessVoidResponse } from '~utils/response'
 
 @singleton()

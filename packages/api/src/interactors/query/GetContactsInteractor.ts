@@ -3,12 +3,12 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Contact, QueryContactsArgs } from '@cbosuite/schema/dist/provider-types'
+import type { Contact, QueryContactsArgs } from '@cbosuite/schema/dist/provider-types'
 import { ForbiddenError } from 'apollo-server'
 import { singleton } from 'tsyringe'
-import { ContactCollection } from '~db/ContactCollection'
+import type { ContactCollection } from '~db/ContactCollection'
 import { createGQLContact } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 
 @singleton()
 export class GetContactsInteractor implements Interactor<unknown, QueryContactsArgs, Contact[]> {

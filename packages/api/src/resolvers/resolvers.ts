@@ -2,10 +2,11 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { IResolvers } from '@graphql-tools/utils'
-import { Resolvers } from '@cbosuite/schema/dist/provider-types'
+import type { IResolvers } from '@graphql-tools/utils'
+import type { Resolvers } from '@cbosuite/schema/dist/provider-types'
 import { Long } from './Long'
-import { container, InjectionToken } from 'tsyringe'
+import type { InjectionToken } from 'tsyringe'
+import { container } from 'tsyringe'
 import { GetOrganizationsInteractor } from '~interactors/query/GetOrganizationsInteractor'
 import { GetOrganizationInteractor } from '~interactors/query/GetOrganizationInteractor'
 import { GetUserInteractor } from '~interactors/query/GetUserInteractor'
@@ -45,7 +46,7 @@ import { UpdateServiceInteractor } from '~interactors/mutation/UpdateServiceInte
 import { CreateServiceInteractor } from '~interactors/mutation/CreateServiceInteractor'
 import { ArchiveContactInteractor } from '~interactors/mutation/ArchiveContactInteractor'
 import { UpdateContactInteractor } from '~interactors/mutation/UpdateContactInteractor'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { ResolveActionUserInteractor } from '~interactors/fields/ResolveActionUserInteractor'
 import { ResolveActionTaggedUserInteractor } from '~interactors/fields/ResolveActionTaggedUserInteractor'
 import { ResolveActionTagsInteractor } from '~interactors/fields/ResolveActionTagsInteractor'

@@ -2,12 +2,12 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { TagUsageCount } from '@cbosuite/schema/dist/provider-types'
+import type { TagUsageCount } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ServiceEntryTagCounter } from '~components/ServiceEntryTagCounter'
-import { ContactCollection } from '~db/ContactCollection'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { Interactor } from '~types'
+import type { ServiceEntryTagCounter } from '~components/ServiceEntryTagCounter'
+import type { ContactCollection } from '~db/ContactCollection'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { Interactor } from '~types'
 
 @singleton()
 export class ResolveTagUsageCountTotalInteractor

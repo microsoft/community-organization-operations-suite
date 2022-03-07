@@ -4,8 +4,8 @@
  */
 
 import { singleton } from 'tsyringe'
-import { Authenticator } from '~components/Authenticator'
-import { RequestContext, User } from '~types'
+import type { Authenticator } from '~components/Authenticator'
+import type { RequestContext, User } from '~types'
 import { extractBearerToken, createLogger } from '~utils'
 
 const log = createLogger('RequestContextBuilder')

@@ -3,15 +3,16 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { OrgAuthDirectiveArgs, RoleType } from '@cbosuite/schema/dist/provider-types'
+import type { OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
+import { RoleType } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { Authenticator } from '../Authenticator'
-import { RequestContext, OrgAuthEvaluationStrategy } from '~types'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { ContactCollection } from '~db/ContactCollection'
-import { TagCollection } from '~db/TagCollection'
-import { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
-import { ServiceCollection } from '~db/ServiceCollection'
+import type { Authenticator } from '../Authenticator'
+import type { RequestContext, OrgAuthEvaluationStrategy } from '~types'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { ContactCollection } from '~db/ContactCollection'
+import type { TagCollection } from '~db/TagCollection'
+import type { ServiceAnswerCollection } from '~db/ServiceAnswerCollection'
+import type { ServiceCollection } from '~db/ServiceCollection'
 
 const SERVICE_ID_ARG = 'serviceId'
 const ENGAGEMENT_ID_ARG = 'engagementId'

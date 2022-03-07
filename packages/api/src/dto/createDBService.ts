@@ -2,9 +2,9 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { ServiceInput } from '@cbosuite/schema/dist/provider-types'
+import type { ServiceInput } from '@cbosuite/schema/dist/provider-types'
 import { v4 as createId } from 'uuid'
-import { DbService } from '~db/types'
+import type { DbService } from '~db/types'
 import { createDBServiceFields } from './createDBServiceFields'
 
 export function createDBService(service: ServiceInput): DbService {

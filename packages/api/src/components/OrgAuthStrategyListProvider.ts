@@ -3,13 +3,13 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { singleton } from 'tsyringe'
-import { OrgAuthEvaluationStrategy } from '~types'
-import { OrgIdArgumentStrategy } from './orgAuthStrategies/OrgIdArgumentStrategy'
-import { OrganizationSourceStrategy } from './orgAuthStrategies/OrganizationSourceStrategy'
-import { EntityIdToOrgIdStrategy } from './orgAuthStrategies/EntityIdToOrgIdStrategy'
-import { InputEntityToOrgIdStrategy } from './orgAuthStrategies/InputEntityToOrgIdStrategy'
-import { InputServiceAnswerEntityToOrgIdStrategy } from './orgAuthStrategies/InputServiceAnswerEntityToOrgIdStrategy'
-import { UserWithinOrgStrategy } from './orgAuthStrategies/UserWithinOrgStrategy'
+import type { OrgAuthEvaluationStrategy } from '~types'
+import type { OrgIdArgumentStrategy } from './orgAuthStrategies/OrgIdArgumentStrategy'
+import type { OrganizationSourceStrategy } from './orgAuthStrategies/OrganizationSourceStrategy'
+import type { EntityIdToOrgIdStrategy } from './orgAuthStrategies/EntityIdToOrgIdStrategy'
+import type { InputEntityToOrgIdStrategy } from './orgAuthStrategies/InputEntityToOrgIdStrategy'
+import type { InputServiceAnswerEntityToOrgIdStrategy } from './orgAuthStrategies/InputServiceAnswerEntityToOrgIdStrategy'
+import type { UserWithinOrgStrategy } from './orgAuthStrategies/UserWithinOrgStrategy'
 
 @singleton()
 export class OrgAuthStrategyListProvider {

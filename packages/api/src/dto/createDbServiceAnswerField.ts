@@ -3,8 +3,8 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { ServiceAnswerFieldInput } from '@cbosuite/schema/dist/provider-types'
-import { DbServiceAnswerField } from '~db/types'
+import type { ServiceAnswerFieldInput } from '@cbosuite/schema/dist/provider-types'
+import type { DbServiceAnswerField } from '~db/types'
 
 export function createDbServiceAnswerField(input: ServiceAnswerFieldInput): DbServiceAnswerField {
 	if (input.value != null && input.values != null) {

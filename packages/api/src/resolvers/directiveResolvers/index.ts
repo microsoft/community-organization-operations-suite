@@ -3,9 +3,10 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { mapSchema, MapperKind, getDirectives } from '@graphql-tools/utils'
-import { defaultFieldResolver, GraphQLSchema } from 'graphql'
+import type { GraphQLSchema } from 'graphql'
+import { defaultFieldResolver } from 'graphql'
 import { createLogger } from '~utils'
-import { DirectiveResolverFn } from './types'
+import type { DirectiveResolverFn } from './types'
 import { auth } from './auth'
 import { orgAuth } from './orgAuth'
 

@@ -2,16 +2,19 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationMarkMentionSeenArgs, UserResponse } from '@cbosuite/schema/dist/provider-types'
+import type {
+	MutationMarkMentionSeenArgs,
+	UserResponse
+} from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createGQLUser } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { SuccessUserResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { UserCollection } from '~db/UserCollection'
-import { Telemetry } from '~components/Telemetry'
-import { DbMention } from '~db/types'
+import type { Localization } from '~components/Localization'
+import type { UserCollection } from '~db/UserCollection'
+import type { Telemetry } from '~components/Telemetry'
+import type { DbMention } from '~db/types'
 
 @singleton()
 export class MarkMentionSeenInteractor

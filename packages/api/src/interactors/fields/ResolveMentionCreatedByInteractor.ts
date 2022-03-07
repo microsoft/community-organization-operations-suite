@@ -2,11 +2,11 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Mention, User } from '@cbosuite/schema/dist/provider-types'
+import type { Mention, User } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { UserCollection } from '~db/UserCollection'
+import type { UserCollection } from '~db/UserCollection'
 import { createGQLUser } from '~dto'
-import { Interactor } from '~types'
+import type { Interactor } from '~types'
 
 @singleton()
 export class ResolveMentionCreatedByInteractor

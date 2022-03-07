@@ -2,8 +2,8 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { RoleType, OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
-import { DbUser } from '~db/types'
+import type { RoleType, OrgAuthDirectiveArgs } from '@cbosuite/schema/dist/provider-types'
+import type { DbUser } from '~db/types'
 
 export interface Interactor<S, I, O> {
 	execute(self: S, input: I, ctx: RequestContext): Promise<O>

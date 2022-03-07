@@ -2,16 +2,19 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationSetUserPasswordArgs, UserResponse } from '@cbosuite/schema/dist/provider-types'
+import type {
+	MutationSetUserPasswordArgs,
+	UserResponse
+} from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createGQLUser } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { validatePasswordHash } from '~utils'
 import { SuccessUserResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { UserCollection } from '~db/UserCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { Localization } from '~components/Localization'
+import type { UserCollection } from '~db/UserCollection'
+import type { Telemetry } from '~components/Telemetry'
 
 @singleton()
 export class SetUserPasswordInteractor

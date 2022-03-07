@@ -5,7 +5,7 @@
 import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
 import faker from 'faker'
 import { v4 } from 'uuid'
-import { DbContact, DbEngagement, DbAction, DbUser, DbTag } from '~db/types'
+import type { DbContact, DbEngagement, DbAction, DbUser, DbTag } from '~db/types'
 import { daysAgo, sometimeLater } from './dates'
 import { createFakeAddress, createFakeName } from './fakes'
 import { pickRandomItem } from './pickRandomItem'

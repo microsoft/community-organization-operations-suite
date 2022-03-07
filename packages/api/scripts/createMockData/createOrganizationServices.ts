@@ -9,7 +9,7 @@ import {
 	ServiceStatus
 } from '@cbosuite/schema/dist/provider-types'
 import { v4 } from 'uuid'
-import { DbService } from '../../src/db/types'
+import type { DbService } from '../../src/db/types'
 
 export function createOrganizationServices(orgId: string): DbService[] {
 	return defaultServices.map((s) => ({

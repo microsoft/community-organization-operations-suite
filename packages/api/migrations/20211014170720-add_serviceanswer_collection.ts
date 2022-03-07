@@ -2,10 +2,10 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { ServiceStatus } from '@cbosuite/schema/dist/client-types'
+import type { ServiceStatus } from '@cbosuite/schema/dist/client-types'
 import { ServiceFieldRequirement, ServiceFieldType } from '@cbosuite/schema/dist/provider-types'
-import { Db, MongoClient } from 'mongodb'
-import {
+import type { Db, MongoClient } from 'mongodb'
+import type {
 	DbService,
 	DbServiceAnswer,
 	DbServiceFieldInput,

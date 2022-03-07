@@ -2,19 +2,22 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { MutationResetUserPasswordArgs, UserResponse } from '@cbosuite/schema/dist/provider-types'
+import type {
+	MutationResetUserPasswordArgs,
+	UserResponse
+} from '@cbosuite/schema/dist/provider-types'
 import { UserInputError } from 'apollo-server-errors'
 import { createGQLUser } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { getPasswordResetHTMLTemplate, createLogger } from '~utils'
 import { SuccessUserResponse } from '~utils/response'
 import { singleton } from 'tsyringe'
-import { Localization } from '~components/Localization'
-import { Configuration } from '~components/Configuration'
-import { Authenticator } from '~components/Authenticator'
+import type { Localization } from '~components/Localization'
+import type { Configuration } from '~components/Configuration'
+import type { Authenticator } from '~components/Authenticator'
 import { MailerProvider } from '~components/MailerProvider'
-import { UserCollection } from '~db/UserCollection'
-import { Telemetry } from '~components/Telemetry'
+import type { UserCollection } from '~db/UserCollection'
+import type { Telemetry } from '~components/Telemetry'
 
 const logger = createLogger('interactors:reset-user-password')
 

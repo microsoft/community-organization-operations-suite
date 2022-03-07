@@ -6,7 +6,7 @@ import { gql } from 'apollo-server-fastify'
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import { resolvers, attachDirectiveResolvers } from '~resolvers'
 import { getSchema } from '~utils/getSchema'
-import { GraphQLSchema } from 'graphql'
+import type { GraphQLSchema } from 'graphql'
 
 export function createSchema(): GraphQLSchema {
 	return attachDirectiveResolvers(

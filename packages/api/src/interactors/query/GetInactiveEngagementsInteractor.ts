@@ -2,18 +2,15 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import {
-	Engagement,
-	QueryActiveEngagementsArgs,
-	EngagementStatus
-} from '@cbosuite/schema/dist/provider-types'
+import type { Engagement, QueryActiveEngagementsArgs } from '@cbosuite/schema/dist/provider-types'
+import { EngagementStatus } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { Configuration } from '~components/Configuration'
-import { EngagementCollection } from '~db/EngagementCollection'
-import { DbEngagement } from '~db/types'
+import type { Configuration } from '~components/Configuration'
+import type { EngagementCollection } from '~db/EngagementCollection'
+import type { DbEngagement } from '~db/types'
 import { sortByDate } from '~utils'
 import { createGQLEngagement } from '~dto'
-import { Interactor, RequestContext } from '~types'
+import type { Interactor, RequestContext } from '~types'
 import { empty } from '~utils/noop'
 
 @singleton()

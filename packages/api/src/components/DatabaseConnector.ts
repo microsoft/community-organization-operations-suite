@@ -2,9 +2,10 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Collection, Db, MongoClient } from 'mongodb'
+import type { Collection, Db } from 'mongodb'
+import { MongoClient } from 'mongodb'
 import { singleton } from 'tsyringe'
-import { Configuration } from './Configuration'
+import type { Configuration } from './Configuration'
 
 @singleton()
 export class DatabaseConnector {

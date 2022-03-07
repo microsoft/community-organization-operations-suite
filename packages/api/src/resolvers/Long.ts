@@ -4,7 +4,8 @@
  */
 /* eslint-disable no-self-compare */
 import { GraphQLScalarType } from 'graphql'
-import { Kind, ASTNode } from 'graphql/language'
+import type { ASTNode } from 'graphql/language'
+import { Kind } from 'graphql/language'
 
 const MAX_LONG = Number.MAX_SAFE_INTEGER
 const MIN_LONG = Number.MIN_SAFE_INTEGER

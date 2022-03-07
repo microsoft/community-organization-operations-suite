@@ -3,8 +3,8 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { Configuration } from './Configuration'
-import { Migrator } from './Migrator'
+import type { Configuration } from './Configuration'
+import type { Migrator } from './Migrator'
 import path from 'path'
 import fs from 'fs'
 import { singleton } from 'tsyringe'

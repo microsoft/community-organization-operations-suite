@@ -2,12 +2,12 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import { Contact, Tag } from '@cbosuite/schema/dist/provider-types'
+import type { Contact, Tag } from '@cbosuite/schema/dist/provider-types'
 import { singleton } from 'tsyringe'
-import { ContactCollection } from '~db/ContactCollection'
-import { TagCollection } from '~db/TagCollection'
+import type { ContactCollection } from '~db/ContactCollection'
+import type { TagCollection } from '~db/TagCollection'
 import { createGQLTag } from '~dto'
-import { Interactor } from '~types'
+import type { Interactor } from '~types'
 import { empty } from '~utils/noop'
 
 @singleton()
