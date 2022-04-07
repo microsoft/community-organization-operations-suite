@@ -7,8 +7,9 @@ import type { UserInput } from '@cbosuite/schema/dist/provider-types'
 import type { DbUser, DbRole } from '~db/types'
 import { v4 as createId } from 'uuid'
 import bcrypt from 'bcryptjs'
+import { createAuditFields } from './createAuditFields'
 
-export function createDBUser(user: UserInput, passphrase: string): DbUser {
+export function createDBUser(user: UserInput, passphrase: string, actor: string): DbUser {
 	return {
 		id: createId(),
 		first_name: user.first,
@@ -36,6 +37,7 @@ export function createDBUser(user: UserInput, passphrase: string): DbUser {
 			: undefined,
 		description: user.description || undefined,
 		additional_info: user.additionalInfo || undefined,
-		fcm_token: user.fcmToken
+		fcm_token: user.fcmToken,
+		...createAuditFields(actor)
 	}
 }
