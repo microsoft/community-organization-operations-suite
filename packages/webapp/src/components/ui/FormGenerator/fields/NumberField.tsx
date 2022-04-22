@@ -6,7 +6,8 @@ import type { ServiceField } from '@cbosuite/schema/dist/client-types'
 import { ServiceFieldRequirement } from '@cbosuite/schema/dist/client-types'
 import { MaskedTextField } from '@fluentui/react'
 import type { FC, FocusEvent } from 'react'
-import React, { memo, useCallback, useMemo } from 'react'
+import React, { memo, useCallback } from 'react'
+import { useInitialFieldValue } from '../FormFieldManager'
 import type { FormFieldManager } from '../FormFieldManager'
 import { fieldStyles } from './styles'
 
@@ -16,6 +17,7 @@ export const NumberField: FC<{
 	field: ServiceField
 	onChange: (submitEnabled: boolean) => void
 }> = memo(function SingleTextField({ editMode, mgr, field, onChange }) {
+	const initialValue = useInitialFieldValue(field, mgr, editMode)
 	const handleChange = useCallback(
 		(value: string) => {
 			mgr.clearFieldError(field.id)
@@ -29,7 +31,8 @@ export const NumberField: FC<{
 		<MaskedTextField
 			label={field.name}
 			required={field.requirement === ServiceFieldRequirement.Required}
-			mask={'99999999'}
+			value={initialValue}
+			mask={'99999999999999999'}
 			maskChar={''}
 			onBlur={(e: FocusEvent<HTMLInputElement>) => handleChange(e.target.value)}
 			onChange={(e, value) => handleChange(value)}
@@ -39,14 +42,3 @@ export const NumberField: FC<{
 		/>
 	)
 })
-
-function useInitialFieldValue(field: ServiceField, mgr: FormFieldManager, editMode: boolean) {
-	return useMemo(() => {
-		if (editMode && !mgr.isFieldValueRecorded(field)) {
-			const fieldValue = mgr.getAnsweredFieldValue(field) || ''
-			mgr.saveFieldSingleValue(field, fieldValue)
-			return fieldValue
-		}
-		return ''
-	}, [field, mgr, editMode])
-}

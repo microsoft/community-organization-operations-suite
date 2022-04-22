@@ -191,3 +191,18 @@ export function tryParseNumber(value: string) {
 		return NaN
 	}
 }
+
+export function useInitialFieldValue(
+	field: ServiceField,
+	mgr: FormFieldManager,
+	editMode: boolean
+) {
+	return useMemo(() => {
+		if (editMode && !mgr.isFieldValueRecorded(field)) {
+			const fieldValue = mgr.getAnsweredFieldValue(field) || ''
+			mgr.saveFieldSingleValue(field, fieldValue)
+			return fieldValue
+		}
+		return ''
+	}, [field, mgr, editMode])
+}
