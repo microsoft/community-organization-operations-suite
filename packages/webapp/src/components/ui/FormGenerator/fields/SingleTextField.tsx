@@ -35,7 +35,8 @@ export const SingleTextField: FC<{
 			onBlur={(e: FocusEvent<HTMLInputElement>) => handleChange(e.target.value)}
 			onChange={(e, value) => handleChange(value)}
 			styles={fieldStyles.textField}
-			errorMessage={mgr.getErrorMessage(field.id)}
+			placeholder={mgr.getfieldPlaceholderText(field.type)}
+			onGetErrorMessage={() => (mgr.hasErrorInField(field.id) ? mgr.getErrorMessage(field.id) : '')}
 		/>
 	)
 })
