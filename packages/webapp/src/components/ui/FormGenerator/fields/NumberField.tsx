@@ -16,7 +16,6 @@ export const NumberField: FC<{
 	field: ServiceField
 	onChange: (submitEnabled: boolean) => void
 }> = memo(function SingleTextField({ editMode, mgr, field, onChange }) {
-	const initialValue = useInitialFieldValue(field, mgr, editMode)
 	const handleChange = useCallback(
 		(value: string) => {
 			mgr.clearFieldError(field.id)
