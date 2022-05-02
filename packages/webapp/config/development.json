@@ -16,13 +16,13 @@
 			"enabled": true
 		},
 		"durableCache": {
-			"enabled": true
+			"enabled": false
 		},
 		"redbox": {
 			"enabled": true
 		},
 		"serviceWorker": {
-			"enabled": true
+			"enabled": false
 		}
 	}
 }
