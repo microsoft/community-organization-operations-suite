@@ -15,7 +15,13 @@
 		"devCallbacks": {
 			"enabled": true
 		},
+		"durableCache": {
+			"enabled": true
+		},
 		"redbox": {
+			"enabled": true
+		},
+		"serviceWorker": {
 			"enabled": true
 		}
 	}
