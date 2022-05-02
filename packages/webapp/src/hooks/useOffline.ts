@@ -3,13 +3,11 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { config } from '~utils/config'
-import { isOfflineState } from '~store'
-import { useRecoilState } from 'recoil'
 
 export function useOffline() {
-	const [isOffline, setIsOffline] = useRecoilState(isOfflineState)
+	const [isOffline, setIsOffline] = useState(false)
 
 	useEffect(() => {
 		const setOffline = () => {
