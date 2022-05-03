@@ -21,28 +21,31 @@ import type QueueLink from 'apollo-link-queue'
  * @param headers
  * @returns {ApolloClient} configured apollo client
  */
+
+const isNodeServer = typeof window === 'undefined'
+
 export function createApolloClient(
 	history: History,
 	queueLink: QueueLink
 ): ApolloClient<NormalizedCacheObject> {
 	return new ApolloClient({
-		ssrMode: typeof window === 'undefined',
+		ssrMode: isNodeServer,
 		link: createRootLink(history, queueLink),
 		cache: getCache()
 	})
 }
 
 function createRootLink(history: History, queueLink: QueueLink) {
-	if (typeof window === 'undefined') {
+	if (isNodeServer) {
 		return createHttpLink()
 	} else {
 		const errorLink = createErrorLink(history)
 		const httpLink = createHttpLink()
 		const wsLink = createWebSocketLink()
 		return from([
-			queueLink as unknown as ApolloLink,
-			errorLink,
-			split(isSubscriptionOperation, wsLink, httpLink)
+			queueLink as unknown as ApolloLink, // Offline
+			errorLink, // Error
+			split(isSubscriptionOperation, wsLink, httpLink) // API server
 		])
 	}
 }

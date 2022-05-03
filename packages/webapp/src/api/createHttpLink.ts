@@ -19,16 +19,11 @@ export function createHttpLink() {
 		}
 	})
 
-	const httpLink = createRawHttpLink()
-	return authLink.concat(httpLink)
-}
-
-function createRawHttpLink() {
 	const httpLink = new HttpLink({
 		uri: config.api.url,
 		headers: getHeaders(),
 		fetch
 	})
 
-	return httpLink
+	return authLink.concat(httpLink)
 }

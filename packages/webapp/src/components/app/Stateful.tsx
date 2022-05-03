@@ -12,12 +12,14 @@ import { createApolloClient } from '~api'
 import QueueLink from 'apollo-link-queue'
 import { useOffline } from '~hooks/useOffline'
 
+// Create an Apollo Link to queue request while offline
 const queueLink = new QueueLink()
 
 export const Stateful: FC = memo(function Stateful({ children }) {
 	const history: History = useHistory() as any
 	const apiClient = createApolloClient(history, queueLink)
 	const isOffline = useOffline()
+
 	useEffect(() => {
 		if (isOffline) {
 			queueLink.close()
@@ -25,6 +27,7 @@ export const Stateful: FC = memo(function Stateful({ children }) {
 			queueLink.open()
 		}
 	}, [isOffline])
+
 	return (
 		<ApolloProvider client={apiClient}>
 			<RecoilRoot>{children}</RecoilRoot>
