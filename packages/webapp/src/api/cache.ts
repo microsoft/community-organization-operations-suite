@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import { config } from '~utils/config'
-import { InMemoryCache } from '@apollo/client'
+import { InMemoryCache } from '@apollo/client/core'
 import localForage from 'localforage'
 import { persistCache, LocalForageWrapper } from 'apollo3-cache-persist'
 import { createLogger } from '~utils/createLogger'

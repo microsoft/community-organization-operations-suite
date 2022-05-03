@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import type { ApolloLink, NormalizedCacheObject, Operation } from '@apollo/client/core'
-import { ApolloClient, split, from } from '@apollo/client'
+import { ApolloClient, split, from } from '@apollo/client/core'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { getCache } from './cache'
 import type { History } from 'history'
