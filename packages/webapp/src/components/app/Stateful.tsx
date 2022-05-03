@@ -4,8 +4,8 @@
  */
 import { ApolloProvider } from '@apollo/client'
 import type { History } from 'history'
-import type { FC} from 'react';
-import { useEffect , memo } from 'react'
+import type { FC } from 'react'
+import { useEffect, memo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { createApolloClient } from '~api'
@@ -24,7 +24,7 @@ export const Stateful: FC = memo(function Stateful({ children }) {
 		} else {
 			queueLink.open()
 		}
-	}, [isOffline, queueLink])
+	}, [isOffline])
 	return (
 		<ApolloProvider client={apiClient}>
 			<RecoilRoot>{children}</RecoilRoot>
