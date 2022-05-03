@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import type { NormalizedCacheObject, Operation } from '@apollo/client/core'
+import type { ApolloLink, NormalizedCacheObject, Operation } from '@apollo/client/core'
 import { ApolloClient, split, from } from '@apollo/client'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { getCache } from './cache'
