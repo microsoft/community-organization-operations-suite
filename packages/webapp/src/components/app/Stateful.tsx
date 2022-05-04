@@ -22,7 +22,7 @@ export const Stateful: FC = memo(function Stateful({ children }) {
 
 	useEffect(() => {
 		if (isOffline) {
-			queueLink.close()
+			queueLink.open() // checking if this the ci issue
 		} else {
 			queueLink.open()
 		}
