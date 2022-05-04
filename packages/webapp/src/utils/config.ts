@@ -52,4 +52,11 @@ export interface Config {
 }
 
 export const config: Config = Object.freeze(__CONFIG__)
+
+// If the devLogger is enabled, show the debug logs
+// https://github.com/debug-js/debug#browser-support
+if (config.features.devLogger.enabled) {
+	localStorage.setItem('debug', 'cbosuite:*')
+}
+
 log(config)

@@ -8,6 +8,15 @@ import localForage from 'localforage'
 import { persistCache, LocalForageWrapper } from 'apollo3-cache-persist'
 import { createLogger } from '~utils/createLogger'
 
+/**
+ * Setup the "InMemoryCache" for Apollo.
+ *
+ * If the `durableCache` feature has been enabled in the config:
+ *  	1. We setup `apollo3-cache-persist` to handle cache persistence.
+ *		2. `localforage` is used to handle Browser native storages APIs.
+ * 		3. Everything is logged.
+ */
+
 let isDurableCacheInitialized = false
 const isDurableCacheEnabled = Boolean(config.features.durableCache.enabled) ?? false
 const logger = createLogger('cache')
