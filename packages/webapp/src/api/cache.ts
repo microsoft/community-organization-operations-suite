@@ -23,7 +23,6 @@ const logger = createLogger('cache')
 const cache: InMemoryCache = new InMemoryCache()
 
 export function getCache() {
-	logger(isDurableCacheInitialized, isDurableCacheEnabled)
 	if (isDurableCacheInitialized) {
 		logger('durable cache is enabled')
 	} else if (!isDurableCacheInitialized && isDurableCacheEnabled) {

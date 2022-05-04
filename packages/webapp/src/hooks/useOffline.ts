@@ -7,15 +7,17 @@ import { useEffect, useState } from 'react'
 import { config } from '~utils/config'
 
 export function useOffline() {
-	const [isOffline, setIsOffline] = useState(false)
+	const [isOffline, setIsOffline] = useState(localStorage.getItem('isOffline') === String(true))
 
 	useEffect(() => {
 		const setOffline = () => {
 			setIsOffline(true)
+			localStorage.setItem('isOffline', 'true')
 		}
 
 		const setOnline = () => {
 			setIsOffline(false)
+			localStorage.setItem('isOffline', 'false')
 		}
 
 		window.addEventListener('offline', setOffline)
