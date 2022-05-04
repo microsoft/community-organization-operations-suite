@@ -10,7 +10,7 @@
 	},
 	"features": {
 		"devLogger": {
-			"enabled": true
+			"enabled": false
 		},
 		"devCallbacks": {
 			"enabled": true

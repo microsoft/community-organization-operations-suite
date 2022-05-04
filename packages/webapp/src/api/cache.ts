@@ -18,21 +18,23 @@ import { createLogger } from '~utils/createLogger'
  */
 
 let isDurableCacheInitialized = false
-const isDurableCacheEnabled = Boolean(config.features.durableCache.enabled) ?? false
+const isDurableCacheEnabled = Boolean(config.features.durableCache.enabled)
 const logger = createLogger('cache')
 const cache: InMemoryCache = new InMemoryCache()
 
 export function getCache() {
-	if (!isDurableCacheInitialized && isDurableCacheEnabled) {
-		logger('durable cache enabled')
+	logger(isDurableCacheInitialized, isDurableCacheEnabled)
+	if (isDurableCacheInitialized) {
+		logger('durable cache is enabled')
+	} else if (!isDurableCacheInitialized && isDurableCacheEnabled) {
 		persistCache({ cache, storage: new LocalForageWrapper(localForage) })
 			.then(() => {
 				isDurableCacheInitialized = true
-				logger('cache persisted')
+				logger('durable cache is setup and enabled')
 			})
-			.catch((err) => logger('error persisting cache', err))
+			.catch((err) => logger('error setting up durable cache', err))
 	} else {
-		logger('durable cache disabled')
+		logger('no durable cache setup')
 	}
 	return cache
 }
