@@ -36,18 +36,20 @@ export function createApolloClient(
 }
 
 function createRootLink(history: History, queueLink: QueueLink) {
-	if (isNodeServer) {
-		return createHttpLink()
-	} else {
-		const errorLink = createErrorLink(history)
-		const httpLink = createHttpLink()
-		const wsLink = createWebSocketLink()
-		return from([
-			queueLink as unknown as ApolloLink, // Offline
-			errorLink, // Error
-			split(isSubscriptionOperation, wsLink, httpLink) // API server
-		])
-	}
+	const httpLink = createHttpLink()
+
+	if (isNodeServer) return httpLink
+
+	const errorLink = createErrorLink(history)
+	const wsLink = createWebSocketLink()
+
+	// Order of Apollo Links:
+	// Offline -> Error -> API Server
+	return from([
+		queueLink as unknown as ApolloLink,
+		errorLink,
+		split(isSubscriptionOperation, wsLink, httpLink)
+	])
 }
 
 function isSubscriptionOperation({ query }: Operation) {
