@@ -16,7 +16,7 @@
 			"enabled": true
 		},
 		"durableCache": {
-			"enabled": false
+			"enabled": true
 		},
 		"redbox": {
 			"enabled": true

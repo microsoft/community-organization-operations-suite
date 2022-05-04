@@ -43,8 +43,8 @@ function createRootLink(history: History, queueLink: QueueLink) {
 	const errorLink = createErrorLink(history)
 	const wsLink = createWebSocketLink()
 
-	// Order of Apollo Links:
-	// Offline -> Error -> API Server
+	// The `from` function combines an array of individual links
+	// into a link chain: Offline -> Error -> API Server
 	return from([
 		queueLink as unknown as ApolloLink,
 		errorLink,
