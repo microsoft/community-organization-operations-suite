@@ -3,7 +3,7 @@
  * Licensed under the MIT license. See LICENSE file in the project.
  */
 import type { FC } from 'react'
-import { memo, Suspense } from 'react'
+import { lazy, memo, Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { ContainerLayout } from '~components/layouts/ContainerLayout'
 import { PushNotifications } from '~components/ui/PushNotifications'
@@ -12,19 +12,37 @@ import { ApplicationRoute } from '~types/ApplicationRoute'
 import { LoadingPlaceholder } from '~ui/LoadingPlaceholder'
 import styles from './AuthorizedRoutes.module.scss'
 
-import NotFound from '~pages/404'
-import Index from '~pages/index'
-// removed lazy loading to force better offline behavior.
-// only reenable to the extent that the offline mode will be caught with a fallback
-import Account /* webpackChunkName: "AccountPage" */ from '~pages/account'
-import Clients /* webpackChunkName: "ClientsPage" */ from '~pages/clients'
-import Specialist /* webpackChunkName: "SpecialistPage" */ from '~pages/specialist'
-import Reporting /* webpackChunkName: "ReportingPage" */ from '~pages/reporting'
-import Tags /* webpackChunkName: "TagsPage" */ from '~pages/tags'
-import ServicesIndex /* webpackChunkName: "ServicesIndexPage" */ from '~pages/services'
-import AddService /* webpackChunkName: "AddServicePage" */ from '~pages/services/addService'
-import EditService /* webpackChunkName: "EditServicePage" */ from '~pages/services/editService'
-import ServiceEntry /* webpackChunkName: "ServiceEntryPage" */ from '~pages/services/serviceEntry'
+/* 
+	Known Issue With Lazy Loading & Offline
+	---------------------------------------	
+	Currently, anything that hasn't already been loaded before going offline will not have
+	loaded and therefore throw an error about missing components.
+
+	An attempt to remove lazy and just preload everything broke CI with timeouts, so for 
+	now, lazy been left in. However, long term, we'll need to both support avoiding lazy 
+	loading or specifically loading all template before going into an intensional offline mode
+	and/or fix CI and acceptence tests to not time out just because we're not lazy loading 
+	things.
+*/
+const NotFound = lazy(() => /* webpackChunkName: "NotFoundPage" */ import('~pages/404'))
+const Index = lazy(() => /* webpackChunkName: "IndexPage" */ import('~pages/index'))
+const Account = lazy(() => /* webpackChunkName: "AccountPage" */ import('~pages/account'))
+const Clients = lazy(() => /* webpackChunkName: "ClientsPage" */ import('~pages/clients'))
+const Specialist = lazy(() => /* webpackChunkName: "SpecialistPage" */ import('~pages/specialist'))
+const Reporting = lazy(() => /* webpackChunkName: "ReportingPage" */ import('~pages/reporting'))
+const Tags = lazy(() => /* webpackChunkName: "TagsPage" */ import('~pages/tags'))
+const ServicesIndex = lazy(
+	() => /* webpackChunkName: "ServicesIndexPage" */ import('~pages/services')
+)
+const AddService = lazy(
+	() => /* webpackChunkName: "AddServicePage" */ import('~pages/services/addService')
+)
+const EditService = lazy(
+	() => /* webpackChunkName: "EditServicePage" */ import('~pages/services/editService')
+)
+const ServiceEntry = lazy(
+	() => /* webpackChunkName: "ServiceEntryPage" */ import('~pages/services/serviceEntry')
+)
 
 export const AuthorizedRoutes: FC = memo(function AuthorizedRoutes() {
 	return (
