@@ -8,33 +8,22 @@ import localForage from 'localforage'
 import { persistCache, LocalForageWrapper } from 'apollo3-cache-persist'
 import { createLogger } from '~utils/createLogger'
 
-const logger = createLogger('cache')
-
-export const cache: InMemoryCache = new InMemoryCache()
-
 let isDurableCacheInitialized = false
-
-/**
- * Enable Cache persistence for offline mode
- */
-async function initializeCache() {
-	const result = await persistCache({ cache, storage: new LocalForageWrapper(localForage) })
-	isDurableCacheInitialized = true
-	return result
-}
+const isDurableCacheEnabled = Boolean(config.features.durableCache.enabled) ?? false
+const logger = createLogger('cache')
+const cache: InMemoryCache = new InMemoryCache()
 
 export function getCache() {
-	if (!isDurableCacheInitialized && isDurableCacheEnabled()) {
+	if (!isDurableCacheInitialized && isDurableCacheEnabled) {
 		logger('durable cache enabled')
-		initializeCache()
-			.then(() => logger('cache persisted'))
+		persistCache({ cache, storage: new LocalForageWrapper(localForage) })
+			.then(() => {
+				isDurableCacheInitialized = true
+				logger('cache persisted')
+			})
 			.catch((err) => logger('error persisting cache', err))
 	} else {
 		logger('durable cache disabled')
 	}
 	return cache
-}
-
-function isDurableCacheEnabled() {
-	return Boolean(config.features.durableCache.enabled)
 }
