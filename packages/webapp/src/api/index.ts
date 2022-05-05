@@ -10,7 +10,7 @@ import type { History } from 'history'
 import { createHttpLink } from './createHttpLink'
 import { createWebSocketLink } from './createWebSocketLink'
 import { createErrorLink } from './createErrorLink'
-import type QueueLink from 'apollo-link-queue'
+import type QueueLink from '~utils/queueLink'
 
 /**
  * Configures and creates the Apollo Client.
