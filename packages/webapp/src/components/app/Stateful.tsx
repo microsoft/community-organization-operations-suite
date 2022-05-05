@@ -9,7 +9,7 @@ import { useEffect, memo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { createApolloClient } from '~api'
-import QueueLink from '~utils/queueLink'
+import QueueLink from 'apollo-link-queue'
 import { useOffline } from '~hooks/useOffline'
 
 // Create an Apollo Link to queue request while offline
