@@ -11,8 +11,8 @@ import { CardRowTitle } from '~components/ui/CardRowTitle'
 import { ShortString } from '~ui/ShortString'
 import { useWindowSize } from '~hooks/useWindowSize'
 import { TagBadge } from '~components/ui/TagBadge'
-import type { IMultiActionButtons } from '~components/ui/MultiActionButton2'
-import { MultiActionButton } from '~components/ui/MultiActionButton2'
+import { ComboButton } from '~components/ui/ComboButton'
+import type { IButtonProps } from '~components/ui/ComboButton'
 import { Namespace, useTranslation } from '~hooks/useTranslation'
 import { useCurrentUser } from '~hooks/api/useCurrentUser'
 import { useHistory } from 'react-router-dom'
@@ -27,17 +27,23 @@ export function useColumns(onServiceClose: (service: Service) => void, isKiosk: 
 	const { isAdmin } = useCurrentUser()
 	const isOffline = useOffline()
 
-	const columnActionButtons = useMemo<Array<IMultiActionButtons<Service>>>(() => {
-		const result: Array<IMultiActionButtons<Service>> = [
+	const startButton = useMemo<IButtonProps>(() => {
+		const result: IButtonProps = {
+			key: t('serviceListRowActions.start'),
+			text: t('serviceListRowActions.start'),
+			className: styles.actionButton,
+			onActionClick: (service: Service) => {
+				navigate(history, ApplicationRoute.ServiceEntry, { sid: service.id })
+			}
+		}
+		return result
+	}, [history, t])
+
+	const columnActionButtons = useMemo<Array<IButtonProps>>(() => {
+		const result: Array<IButtonProps> = [
 			{
-				name: t('serviceListRowActions.start'),
-				className: styles.actionButton,
-				onActionClick(service: Service) {
-					navigate(history, ApplicationRoute.ServiceEntry, { sid: service.id })
-				}
-			},
-			{
-				name: t('serviceListRowActions.startKiosk'),
+				key: t('serviceListRowActions.startKiosk'),
+				text: t('serviceListRowActions.startKiosk'),
 				className: styles.actionButton,
 				onActionClick(service: Service) {
 					navigate(history, ApplicationRoute.ServiceEntryKiosk, { sid: service.id }, true)
@@ -45,23 +51,23 @@ export function useColumns(onServiceClose: (service: Service) => void, isKiosk: 
 			}
 		]
 
-		if (isAdmin) {
+		if (isAdmin && !isOffline) {
 			result.push(
 				{
-					name: t('serviceListRowActions.edit'),
+					key: t('serviceListRowActions.edit'),
+					text: t('serviceListRowActions.edit'),
 					className: styles.actionButton,
 					onActionClick(service: Service) {
 						navigate(history, ApplicationRoute.EditService, { sid: service.id })
-					},
-					isDisabled: isOffline
+					}
 				},
 				{
-					name: t('serviceListRowActions.archive'),
+					key: t('serviceListRowActions.archive'),
+					text: t('serviceListRowActions.archive'),
 					className: styles.actionButton,
 					onActionClick(service: Service) {
 						onServiceClose(service)
-					},
-					isDisabled: isOffline
+					}
 				}
 			)
 		}
@@ -134,11 +140,19 @@ export function useColumns(onServiceClose: (service: Service) => void, isKiosk: 
 					name: '',
 					className: 'col-4 d-flex flex-wrap justify-content-center',
 					onRenderColumnItem(service: Service) {
-						return <MultiActionButton columnItem={service} buttonGroup={columnActionButtons} />
+						return (
+							<>
+								<ComboButton
+									mainButton={startButton}
+									context={service}
+									menuOptions={columnActionButtons}
+								/>
+							</>
+						)
 					}
 				}
 			)
 		}
 		return columns
-	}, [t, isMD, isKiosk, columnActionButtons, history])
+	}, [t, isMD, isKiosk, startButton, columnActionButtons, history])
 }
