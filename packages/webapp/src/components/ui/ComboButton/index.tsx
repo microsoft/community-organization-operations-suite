@@ -10,9 +10,8 @@ import { useState, memo } from 'react'
 import styles from './index.module.scss'
 import type { StandardFC } from '~types/StandardFC'
 
-export interface IComboButtonProps<T> {
+export interface IComboButtonProps {
 	mainButton: IButtonProps
-	context: T
 	className?: string
 	iconName?: string
 	isDisabled?: boolean
@@ -24,12 +23,11 @@ export interface IButtonProps {
 	text: string
 	className?: string
 	isDisabled?: boolean
-	onActionClick?: (A) => void
+	onActionClick?: () => void
 }
 
-export const ComboButton: StandardFC<IComboButtonProps<unknown>> = memo(function ComboButton({
+export const ComboButton: StandardFC<IComboButtonProps> = memo(function ComboButton({
 	mainButton,
-	context,
 	menuOptions,
 	iconName = 'CaretSolidDown',
 	isDisabled
@@ -40,7 +38,7 @@ export const ComboButton: StandardFC<IComboButtonProps<unknown>> = memo(function
 		return {
 			key: opt.key,
 			text: opt.text,
-			onClick: () => opt.onActionClick(context)
+			onClick: () => opt.onActionClick()
 		}
 	})
 
@@ -48,7 +46,7 @@ export const ComboButton: StandardFC<IComboButtonProps<unknown>> = memo(function
 		<>
 			<button
 				disabled={mainButton.isDisabled}
-				onClick={() => mainButton.onActionClick(context)}
+				onClick={() => mainButton.onActionClick()}
 				className={cx(
 					'btn btn-primary d-flex justify-content-center align-items-center',
 					styles.mainButton

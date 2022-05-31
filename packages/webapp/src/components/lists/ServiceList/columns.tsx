@@ -20,59 +20,21 @@ import { navigate } from '~utils/navigate'
 import { ApplicationRoute } from '~types/ApplicationRoute'
 import { useOffline } from '~hooks/useOffline'
 
+function generateButton(className: string, text: string, onClick: () => void): IButtonProps {
+	return {
+		key: text,
+		text,
+		className,
+		onActionClick: onClick
+	}
+}
+
 export function useColumns(onServiceClose: (service: Service) => void, isKiosk: boolean) {
 	const { t } = useTranslation(Namespace.Services)
 	const { isMD } = useWindowSize()
 	const history = useHistory()
 	const { isAdmin } = useCurrentUser()
 	const isOffline = useOffline()
-
-	const startButton = useMemo<IButtonProps>(() => {
-		const result: IButtonProps = {
-			key: t('serviceListRowActions.start'),
-			text: t('serviceListRowActions.start'),
-			className: styles.actionButton,
-			onActionClick: (service: Service) => {
-				navigate(history, ApplicationRoute.ServiceEntry, { sid: service.id })
-			}
-		}
-		return result
-	}, [history, t])
-
-	const columnActionButtons = useMemo<Array<IButtonProps>>(() => {
-		const result: Array<IButtonProps> = [
-			{
-				key: t('serviceListRowActions.startKiosk'),
-				text: t('serviceListRowActions.startKiosk'),
-				className: styles.actionButton,
-				onActionClick(service: Service) {
-					navigate(history, ApplicationRoute.ServiceEntryKiosk, { sid: service.id }, true)
-				}
-			}
-		]
-
-		if (isAdmin && !isOffline) {
-			result.push(
-				{
-					key: t('serviceListRowActions.edit'),
-					text: t('serviceListRowActions.edit'),
-					className: styles.actionButton,
-					onActionClick(service: Service) {
-						navigate(history, ApplicationRoute.EditService, { sid: service.id })
-					}
-				},
-				{
-					key: t('serviceListRowActions.archive'),
-					text: t('serviceListRowActions.archive'),
-					className: styles.actionButton,
-					onActionClick(service: Service) {
-						onServiceClose(service)
-					}
-				}
-			)
-		}
-		return result
-	}, [onServiceClose, isAdmin, history, t, isOffline])
 
 	return useMemo<IPaginatedListColumn[]>(() => {
 		const columns: IPaginatedListColumn[] = [
@@ -140,13 +102,46 @@ export function useColumns(onServiceClose: (service: Service) => void, isKiosk: 
 					name: '',
 					className: 'col-4 d-flex flex-wrap justify-content-center',
 					onRenderColumnItem(service: Service) {
+						const startButtonOnClick = () =>
+							navigate(history, ApplicationRoute.ServiceEntry, { sid: service.id })
+						const startButton = generateButton(
+							styles.actionButton,
+							t('serviceListRowActions.start'),
+							startButtonOnClick
+						)
+
+						const startKioskButtonOnClick = () =>
+							navigate(history, ApplicationRoute.ServiceEntryKiosk, { sid: service.id }, true)
+						const startKioskButton = generateButton(
+							styles.actionButton,
+							t('serviceListRowActions.startKiosk'),
+							startKioskButtonOnClick
+						)
+
+						const columnActionButtons: Array<IButtonProps> = [startKioskButton]
+
+						if (isAdmin && !isOffline) {
+							const editButtonOnClick = () =>
+								navigate(history, ApplicationRoute.EditService, { sid: service.id })
+							const editButton = generateButton(
+								styles.actionButton,
+								t('serviceListRowActions.edit'),
+								editButtonOnClick
+							)
+
+							const archiveButtonOnClick = () => onServiceClose(service)
+							const archiveButton = generateButton(
+								styles.actionButton,
+								t('serviceListRowActions.archive'),
+								archiveButtonOnClick
+							)
+
+							columnActionButtons.push(editButton, archiveButton)
+						}
+
 						return (
 							<>
-								<ComboButton
-									mainButton={startButton}
-									context={service}
-									menuOptions={columnActionButtons}
-								/>
+								<ComboButton mainButton={startButton} menuOptions={columnActionButtons} />
 							</>
 						)
 					}
@@ -154,5 +149,5 @@ export function useColumns(onServiceClose: (service: Service) => void, isKiosk: 
 			)
 		}
 		return columns
-	}, [t, isMD, isKiosk, startButton, columnActionButtons, history])
+	}, [t, isMD, isKiosk, history, isAdmin, isOffline, onServiceClose])
 }
