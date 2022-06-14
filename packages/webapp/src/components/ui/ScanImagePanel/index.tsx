@@ -35,20 +35,12 @@ function useVideo(videoRef, canvasRef) {
 				if (!streaming) {
 					setVideoSize(videoRef)
 					setCanvasSize(canvasRef)
+
 					streaming = true
 				}
 			},
 			false
 		)
-
-		// takePhotoButtonRef.current.addEventListener('click', function(ev){
-		// 	takePicture(videoRef, canvasRef)
-		// }, false)
-		// return () => {
-		// 	if (takePhotoButtonRef.current !== null) {
-		// 		takePhotoButtonRef.current.removeEventListener()
-		// 	}
-		// }
 	}, [videoRef, canvasRef])
 }
 
@@ -77,14 +69,30 @@ function takePicture(videoRef, canvasRef) {
 }
 
 function startup(videoRef) {
-	navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(function (stream) {
+	// navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: { exact: "environment" } } }).then(function (stream) {
+	// 	videoRef.current.srcObject = stream
+	// 	videoRef.current.play()
+	// })
+
+	// const supports = navigator.mediaDevices.getSupportedConstraints();
+	// if (!supports['facingMode']) {
+	// 	alert('This browser does not support facingMode!');
+	// }
+
+	const options = {
+		audio: false,
+		video: {
+			facingMode: 'environment' //'user', // Or 'environment'
+		}
+	}
+
+	navigator.mediaDevices.getUserMedia(options).then(function (stream) {
 		videoRef.current.srcObject = stream
 		videoRef.current.play()
 	})
 }
 
 interface ScanImagePanelProps {
-	// request?: { id: string; orgId: string }
 	onClose?: () => void
 	isLoaded?: (loaded: boolean) => void
 }
@@ -110,7 +118,6 @@ export const ScanImagePanel: StandardFC<ScanImagePanelProps> = memo(function Sca
 	const turnCameraOn = () => {
 		setVideoSize(videoRef)
 		setImageTakenState(false)
-		// startup(videoRef, canvasRef, takePhotoButtonRef)
 	}
 
 	const close = () => {
@@ -119,7 +126,6 @@ export const ScanImagePanel: StandardFC<ScanImagePanelProps> = memo(function Sca
 	}
 	const photoTaken = () => {
 		takePicture(videoRef, canvasRef)
-		// turnOffCamera(videoRef)
 		videoRef.current.pause()
 		videoRef.current.setAttribute('width', 0)
 		videoRef.current.setAttribute('height', 0)

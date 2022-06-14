@@ -45,14 +45,19 @@ export const Persona: StandardFC = memo(function Persona({ className }) {
 				logout()
 				onLogoutClick()
 			}
-		},
-		{
+		}
+	]
+	if (
+		['demo', 'staging', 'integ', 'local'].filter((env) => config.origin.includes(env)).length > 0 &&
+		config?.features?.takePhotoMode?.enabled
+	) {
+		contextMenuItems.push({
 			key: 'takePhoto',
 			text: c('personaMenu.takePhoto'),
 			className: 'toggle-offline',
 			onClick: onTakePhotoClick
-		}
-	]
+		})
+	}
 
 	// is the user env demo, staging, integ, or local
 	if (
