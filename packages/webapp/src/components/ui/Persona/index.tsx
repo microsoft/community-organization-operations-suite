@@ -28,6 +28,7 @@ export const Persona: StandardFC = memo(function Persona({ className }) {
 	const lastName = currentUser?.name?.last || ''
 	const onAccountClick = useNavCallback(ApplicationRoute.Account)
 	const onLogoutClick = useNavCallback(ApplicationRoute.Logout)
+	const onTakePhotoClick = useNavCallback(ApplicationRoute.ScanManager)
 
 	const contextMenuItems = [
 		{
@@ -44,6 +45,12 @@ export const Persona: StandardFC = memo(function Persona({ className }) {
 				logout()
 				onLogoutClick()
 			}
+		},
+		{
+			key: 'takePhoto',
+			text: c('personaMenu.takePhoto'),
+			className: 'toggle-offline',
+			onClick: onTakePhotoClick
 		}
 	]
 

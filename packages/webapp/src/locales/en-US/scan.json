@@ -1,0 +1,16 @@
+{
+  "scanManager": {
+    "pageTitle": "Scan Manager",
+    "startScanButton": "Start Scan"
+  },
+  "scanImage": {
+    "pageTitle": "Scan Image",
+    "videoStremNotWorking": "Video stream not available.",
+    "takeMoreButton": "Take More",
+    "takePhotoButton": "Take Photo",
+    "turnOnFlashButton": "Flash",
+    "cancelButton": "Cancel",
+    "previewPhotoText": "1 photo complete.",
+    "doneUploadButton": "Done Upload"
+  }
+}
