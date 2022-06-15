@@ -38,7 +38,8 @@
     "_accountText.comment": "Persona menu navigation item for Account page",
     "logoutText": "Logout",
     "_logoutText.comment": "Persona menu navigation item for Logout user action",
-    "takePhoto": "Take Photo"
+    "takePhoto": "Take Photo",
+    "_takePhoto.comment": "Persona menu navigation item for take photo user action"
   },
   "mobileMenu": {
     "homePageLabel": "Dashboard",

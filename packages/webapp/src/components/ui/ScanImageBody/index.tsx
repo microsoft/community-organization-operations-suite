@@ -14,11 +14,5 @@ interface ScanImageBodyProps {
 }
 
 export const ScanImageBody: StandardFC<ScanImageBodyProps> = memo(function ScanFormPanelBody() {
-	return (
-		<>
-			<div className={cx(styles.scanImageComponentContainer)}>
-				<ScanImagePanel />
-			</div>
-		</>
-	)
+	return <ScanImagePanel />
 })
