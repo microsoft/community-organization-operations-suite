@@ -5,6 +5,7 @@
 import type { StandardFC } from '~types/StandardFC'
 import { memo } from 'react'
 import { ScanImagePanel } from '~components/ui/ScanImagePanel'
+import { ScanOcrDemo } from '~components/ui/ScanOcrDemo'
 
 interface ScanImageBodyProps {
 	onClose?: () => void
@@ -12,5 +13,6 @@ interface ScanImageBodyProps {
 }
 
 export const ScanImageBody: StandardFC<ScanImageBodyProps> = memo(function ScanFormPanelBody() {
-	return <ScanImagePanel />
+	// return <ScanImagePanel />
+	return <ScanOcrDemo />
 })
