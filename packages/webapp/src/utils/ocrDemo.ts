@@ -2,21 +2,33 @@
  * Copyright (c) Microsoft. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project.
  */
-import 'dotenv/config'
-import { AzureKeyCredential, DocumentAnalysisClient } from '@azure/ai-form-recognizer'
 
-const key = process.env.OCR_KEY
-const endpoint = process.env.OCR_ENDPOINT
+/**
+ * Demo Code
+ * Needs to be clean up in next sprint
+ */
+import { imageOcrData } from './demoData'
 
-export async function localFile(file) {
-	const client = new DocumentAnalysisClient(endpoint, new AzureKeyCredential(key))
-	const poller = await client.beginAnalyzeDocument('prebuilt-document', file) //{
-	//     contentType: "image/png",
-	//     onProgress: (state) => { console.log(`status: ${state.status}`); }
-	// });
-	const roughResult = await poller.pollUntilDone()
-	// console.log('roughResult', roughResult)
-	const { keyValuePairs } = roughResult
+const callOCR = async (file) => {
+	const formdata = new FormData()
+	formdata.append('file', file)
+
+	const requestOptions = {
+		method: 'POST',
+		body: formdata
+	}
+
+	let ocrResult = null
+	await fetch('https://cbo-ops-suite.azurewebsites.net/api/ocr', requestOptions)
+		.then((response) => response.text())
+		.then((result) => (ocrResult = result))
+	return ocrResult
+}
+
+const localFile = async (file) => {
+	const request = await callOCR(file)
+
+	const { keyValuePairs } = request
 	// console.log("Key-Value Pairs:");
 	const result = []
 	for (const { key, value, confidence } of keyValuePairs) {
@@ -30,3 +42,5 @@ export async function localFile(file) {
 	}
 	return result
 }
+
+export default localFile
