@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.2",
-    "@azure/identity": "^2.0.5",
     "@cbosuite/schema": "workspace:^",
     "@fluentui/merge-styles": "^8.4.0",
     "@fluentui/react": "^8.58.0",
@@ -44,7 +43,6 @@
     "core-js": "^3.21.1",
     "crypto-js": "^4.1.1",
     "debug": "^4.3.3",
-    "dotenv": "^10.0.0",
     "firebase": "^8.10.1",
     "formik": "^2.2.9",
     "graphql": "^16.4.0",
