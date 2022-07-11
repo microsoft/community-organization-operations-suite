@@ -100,7 +100,12 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 				/>
 			</div>
 			<div style={{ display: 'flex' }}>
-				<img id='pictureFromCamera' ref={imgRef} alt='' style={{ width: '50%', height: '50%' }} />
+				<img
+					id='pictureFromCamera'
+					ref={imgRef}
+					alt='taken from mobile'
+					style={{ width: '50%', height: '50%' }}
+				/>
 				{scanResult !== null ? (
 					<div style={{ height: '90%', padding: '0px 0px 15px 15px', overflowY: 'scroll' }}>
 						{showResult(imgResult)}
