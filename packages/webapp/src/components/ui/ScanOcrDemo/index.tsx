@@ -8,8 +8,9 @@
  * Needs to be clean up in next sprint
  */
 
-import { useRef, useState , memo } from 'react'
-import localFile from '~utils/ocrDemo'
+import { useRef, useState, memo } from 'react'
+import scanFile from '~utils/ocrDemo'
+import { DefaultButton } from '@fluentui/react/lib/Button'
 import type { StandardFC } from '~types/StandardFC'
 
 let inputElement = null
@@ -69,24 +70,35 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 
 	return (
 		<>
-			<button onClick={turnOnNativeCameraApp} style={{ fontSize: 'large' }}>
-				Start Camera
-			</button>
-			<input
-				ref={(input) => (inputElement = input)}
-				id='camerFileInput'
-				type='file'
-				accept='image/png'
-				capture='environment' //'environment' Or 'user'
-				style={{ display: 'none' }}
-				onChange={async (event) => {
-					const imgFile = event.target.files[0]
-					imgSrc = window.URL.createObjectURL(imgFile)
-					imgRef.current.setAttribute('src', imgSrc)
-					imgResult = await localFile(imgFile)
-					setScanResult(imgResult)
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					padding: '20px 0px 20px 0px'
 				}}
-			/>
+			>
+				<DefaultButton
+					text={'Start Camera'}
+					style={{ fontSize: 'large' }}
+					onClick={turnOnNativeCameraApp}
+				/>
+				<input
+					ref={(input) => (inputElement = input)}
+					id='camerFileInput'
+					type='file'
+					accept='image/png'
+					capture='environment' //'environment' Or 'user'
+					style={{ display: 'none' }}
+					onChange={async (event) => {
+						const imgFile = event.target.files[0]
+						imgSrc = window.URL.createObjectURL(imgFile)
+						imgRef.current.setAttribute('src', imgSrc)
+						imgResult = await scanFile(imgFile)
+						setScanResult(imgResult)
+					}}
+				/>
+			</div>
 			<div style={{ display: 'flex' }}>
 				<img id='pictureFromCamera' ref={imgRef} alt='' style={{ width: '50%', height: '50%' }} />
 				{scanResult !== null ? (

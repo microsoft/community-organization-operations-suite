@@ -7,9 +7,8 @@
  * Demo Code
  * Needs to be clean up in next sprint
  */
-import { imageOcrData } from './demoData'
 
-const callOCR = async (file) => {
+const scanFile = async (file) => {
 	const formdata = new FormData()
 	let ocrResult = null
 	formdata.append('file', file)
@@ -19,22 +18,8 @@ const callOCR = async (file) => {
 		body: formdata
 	}
 	ocrResult = await fetch('https://cbo-ops-suite.azurewebsites.net/api/ocr', requestOptions)
-	return ocrResult
+	const response = await ocrResult.json()
+	return response
 }
 
-const localFile = async (file) => {
-	const request = await callOCR(file)
-	const result = []
-	for (const { key, value, confidence } of request) {
-		// console.log("- Key  :", `"${key.content}"`);
-		// console.log("  Value:", `"${value?.content ?? "<undefined>"}" (${confidence})`);
-		result.push({
-			key: key.content,
-			value: value?.content ?? '<undefined>',
-			confidence: confidence
-		})
-	}
-	return result
-}
-
-export default localFile
+export default scanFile
