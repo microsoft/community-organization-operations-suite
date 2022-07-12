@@ -15,6 +15,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button'
 import type { StandardFC } from '~types/StandardFC'
 import { Checkbox, Stack } from '@fluentui/react'
 import { TextField } from '@fluentui/react/lib/TextField'
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner'
 import cx from 'classnames'
 import styles from './index.module.scss'
 
@@ -111,6 +112,7 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 	const [scanResult, setScanResult] = useState(null)
 	const [imgHeight, setImgHeight] = useState('700px')
 	const [imgWidth, setImgWidth] = useState('700px')
+	const [isSpinnerShowing, setIsSpinnerShowing] = useState(false)
 	const turnOnNativeCameraApp = () => {
 		inputElement.click()
 	}
@@ -140,6 +142,7 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 					style={{ display: 'none' }}
 					onChange={async (event) => {
 						setScanResult(null)
+						setIsSpinnerShowing(true)
 						const imgFile = event.target.files[0]
 						imgSrc = window.URL.createObjectURL(imgFile)
 						imgRef.current.setAttribute('src', imgSrc)
@@ -154,8 +157,13 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 				<img
 					id='pictureFromCamera'
 					ref={imgRef}
-					alt='taken from mobile'
-					style={{ width: '50%', height: '50%' }}
+					alt='Taken from mobile'
+					style={{
+						width: '50%',
+						height: '100%',
+						background: '#edebe9',
+						color: '#edebe9'
+					}}
 				/>
 				{scanResult !== null ? (
 					<div
@@ -171,7 +179,9 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 						<form>{showResult(imgResult)}</form>
 					</div>
 				) : (
-					<p> </p>
+					<div style={{ margin: 'auto' }}>
+						{isSpinnerShowing ? <Spinner size={SpinnerSize.large} /> : <p></p>}
+					</div>
 				)}
 			</div>
 		</>
