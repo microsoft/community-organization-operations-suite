@@ -141,6 +141,7 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 					capture='environment' //'environment' Or 'user'
 					style={{ display: 'none' }}
 					onChange={async (event) => {
+						imgRef.current.style.opacity = 1
 						setScanResult(null)
 						setIsSpinnerShowing(true)
 						const imgFile = event.target.files[0]
@@ -162,7 +163,8 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 						width: '50%',
 						height: '100%',
 						background: '#edebe9',
-						color: '#edebe9'
+						color: '#edebe9',
+						opacity: 0
 					}}
 				/>
 				{scanResult !== null ? (
