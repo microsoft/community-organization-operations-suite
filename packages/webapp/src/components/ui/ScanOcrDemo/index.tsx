@@ -10,8 +10,13 @@
 
 import { useRef, useState, memo } from 'react'
 import scanFile from '~utils/ocrDemo'
+import { ScanOcrDemoDatePicker } from '~components/ui/ScanOcrDemoDataPicker'
 import { DefaultButton } from '@fluentui/react/lib/Button'
 import type { StandardFC } from '~types/StandardFC'
+import { Checkbox, Stack } from '@fluentui/react'
+import { TextField } from '@fluentui/react/lib/TextField'
+import cx from 'classnames'
+import styles from './index.module.scss'
 
 let inputElement = null
 let imgSrc = null
@@ -29,13 +34,57 @@ function confidenceColour(confidence) {
 	return colour
 }
 
-function input(inputValue) {
+function containsDateInKey(key) {
+	return key.toLowerCase().includes('date') ? true : false
+}
+
+function createDateField(key, possibleDate) {
+	const date = new Date(possibleDate)
+	return <ScanOcrDemoDatePicker label={key} inputValue={date} />
+}
+
+function input(key, inputValue, formattedConfidence, className) {
 	if (inputValue === ':selected:') {
-		return <input type='checkbox' checked={true} />
+		return (
+			<div style={{}}>
+				<Stack>
+					<Checkbox label={key} defaultChecked />
+				</Stack>
+				<h5
+					className={cx('mb-2')}
+					style={{ color: confidenceColour(formattedConfidence) }}
+				>{`Confidence: ${formattedConfidence}%`}</h5>
+			</div>
+		)
 	} else if (inputValue === ':unselected:') {
-		return <input type='checkbox' checked={false} />
+		return (
+			<>
+				<div style={{}}>
+					<Stack>
+						<Checkbox label={key} />
+					</Stack>
+					<h5
+						className={cx('mb-2')}
+						style={{ whiteSpace: 'nowrap', color: confidenceColour(formattedConfidence) }}
+					>{`Confidence: ${formattedConfidence}%`}</h5>
+				</div>
+			</>
+		)
 	} else {
-		return <input size={40} value={inputValue ?? '<NO Input>'} />
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column' }}>
+				{containsDateInKey(key) ? (
+					createDateField(key, inputValue)
+				) : (
+					<TextField label={key} defaultValue={inputValue} />
+				)}
+
+				<h5
+					className={cx('mb-2')}
+					style={{ color: confidenceColour(formattedConfidence) }}
+				>{`Confidence: ${formattedConfidence}%`}</h5>
+			</div>
+		)
 	}
 }
 
@@ -45,11 +94,7 @@ function showResult(results) {
 		const formattedConfidence = (confidence * 100).toFixed(2)
 		show.push(
 			<div key={show.length} style={{ padding: '5px', fontSize: 'initial' }}>
-				<h3 style={{ display: 'flex', fontWeight: 'bold' }}>{key}</h3>
-				<div style={{ display: 'flex' }}>{input(value)}</div>
-				<div
-					style={{ display: 'flex', color: confidenceColour(formattedConfidence) }}
-				>{`Confidence: ${formattedConfidence}%`}</div>
+				{input(key, value, formattedConfidence, styles.formikField)}
 			</div>
 		)
 	}
@@ -64,6 +109,8 @@ interface ScanOcrDemoProps {
 export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDemo({}) {
 	const imgRef = useRef(null)
 	const [scanResult, setScanResult] = useState(null)
+	const [imgHeight, setImgHeight] = useState('700px')
+	const [imgWidth, setImgWidth] = useState('700px')
 	const turnOnNativeCameraApp = () => {
 		inputElement.click()
 	}
@@ -79,6 +126,7 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 				}}
 			>
 				<DefaultButton
+					className={cx('py-4', styles.startCameraButton)}
 					text={'Start Camera'}
 					style={{ fontSize: 'large' }}
 					onClick={turnOnNativeCameraApp}
@@ -91,11 +139,14 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 					capture='environment' //'environment' Or 'user'
 					style={{ display: 'none' }}
 					onChange={async (event) => {
+						setScanResult(null)
 						const imgFile = event.target.files[0]
 						imgSrc = window.URL.createObjectURL(imgFile)
 						imgRef.current.setAttribute('src', imgSrc)
 						imgResult = await scanFile(imgFile)
 						setScanResult(imgResult)
+						setImgHeight(imgRef.current.height + 'px')
+						setImgWidth(imgRef.current.width + 'px')
 					}}
 				/>
 			</div>
@@ -107,8 +158,17 @@ export const ScanOcrDemo: StandardFC<ScanOcrDemoProps> = memo(function ScanOcrDe
 					style={{ width: '50%', height: '50%' }}
 				/>
 				{scanResult !== null ? (
-					<div style={{ height: '90%', padding: '0px 0px 15px 15px', overflowY: 'scroll' }}>
-						{showResult(imgResult)}
+					<div
+						style={{
+							height: imgHeight,
+							width: imgWidth,
+							padding: '0px 0px 15px 15px',
+							overflowY: 'auto',
+							borderStyle: 'double',
+							borderColor: '#0078D4'
+						}}
+					>
+						<form>{showResult(imgResult)}</form>
 					</div>
 				) : (
 					<p> </p>

@@ -8,18 +8,20 @@
  * Needs to be clean up in next sprint
  */
 
-const scanFile = async (file) => {
+const requestOcrData = async (file) => {
 	const formdata = new FormData()
-	let ocrResult = null
 	formdata.append('file', file)
 
 	const requestOptions = {
 		method: 'POST',
 		body: formdata
 	}
-	ocrResult = await fetch('https://cbo-ops-suite.azurewebsites.net/api/ocr', requestOptions)
-	const response = await ocrResult.json()
-	return response
+	return fetch('https://cbo-ops-suite.azurewebsites.net/api/ocr', requestOptions)
+}
+
+const scanFile = async (file) => {
+	const result = await Promise.all([requestOcrData(file).then((result) => result.json())])
+	return result[0]
 }
 
 export default scanFile
